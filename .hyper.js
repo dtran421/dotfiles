@@ -122,24 +122,41 @@ module.exports = {
         // todo: does not pick up config changes automatically, need to restart terminal :/
         webLinksActivationKey: '',
         // if `false` (without backticks and without quotes), Hyper will use ligatures provided by some fonts
-        disableLigatures: true,
+        disableLigatures: false,
         // set to true to disable auto updates
         disableAutoUpdates: false,
         // set to true to enable screen reading apps (like NVDA) to read the contents of the terminal
         screenReaderMode: false,
         // set to true to preserve working directory when creating splits or tabs
         preserveCWD: true,
-        // for advanced config flags please refer to https://hyper.is/#cfg
-	init: [
-	  {
-	    rule: 'once',
-	    commands: ['/User/dtran/launch.sh']
-	  },
-	  {
-	    rule: 'all',
-	    commands: ['ls']
-	  }
-       ]   
+        opacity: 1,
+        hyperBorder: {
+            animate: true,
+            borderWidth: '4px'
+        },
+        hypest: {
+            darkmode: true,
+            borders: true,
+            accentColor: "magenta",
+            vibrancy: false,
+            hideControls: true  
+        },
+        hyperTabs: {
+            trafficButtons: false,
+            border: true,
+            tabIconsColored: true
+        },
+        hyperSearchUI: {
+            inputBorderRadius: 2,
+            buttonBorderRadius: 2,
+            buttonMargin: 4,
+            prevButton: '←',
+            nextButton: '→' 
+        },
+        hyperStatusLine: {
+            footerTransparent: false,
+        }
+        // for advanced config flags please refer to https://hyper.is/#cfg          
     },
     // a list of plugins to fetch and install from npm
     // format: [@org/]project[#version]
@@ -148,17 +165,21 @@ module.exports = {
     //   `@company/project`
     //   `project#1.0.1`
     plugins: [
-        `zsh-autosuggestions`,
-        `zsh-syntax-highlighting`,
-        `hypercwd`,
-        `hyper-init`,
+        "hyper-tab-icons",
+        "hyperborder",
+        "hyper-hypest",
+        "hyper-search",
+        "hyper-chesterish",
+        "gitrocket",
+        "hyper-opacity",
+        "hyper-statusline"
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
     // to load it and avoid it being `npm install`ed
     localPlugins: [
-  
-],
+
+    ],
     keymaps: {
     // Example
     // 'window:devtools': 'cmd+alt+o',

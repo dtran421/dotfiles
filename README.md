@@ -23,3 +23,5 @@ First, ensure you're in the root folder `~/`. Make changes to a dotfile. Then, r
 - [Bitbucket Tutorial](https://www.atlassian.com/git/tutorials/dotfiles)
 
 - [Medium Article](https://fwuensche.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b)
+
+- [Hyper Customization (awesome-hyper)](https://github.com/bnb/awesome-hyper)
