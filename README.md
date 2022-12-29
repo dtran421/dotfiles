@@ -3,7 +3,7 @@ macOS config dotfiles
 
 ## Committing Changes
 
-First, make changes to dotfile. Then, run the following commands:
+First, ensure you're in the root folder `~/`. Make changes to a dotfile. Then, run the following commands:
 
 ```sh
     dotfiles <add/stage> <dotfile name>

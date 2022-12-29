@@ -130,6 +130,16 @@ module.exports = {
         // set to true to preserve working directory when creating splits or tabs
         preserveCWD: true,
         // for advanced config flags please refer to https://hyper.is/#cfg
+	init: [
+	  {
+	    rule: 'once',
+	    commands: ['/User/dtran/launch.sh']
+	  },
+	  {
+	    rule: 'all',
+	    commands: ['ls']
+	  }
+       ]   
     },
     // a list of plugins to fetch and install from npm
     // format: [@org/]project[#version]
@@ -139,7 +149,9 @@ module.exports = {
     //   `project#1.0.1`
     plugins: [
         `zsh-autosuggestions`,
-        `zsh-syntax-highlighting`
+        `zsh-syntax-highlighting`,
+        `hypercwd`,
+        `hyper-init`,
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
