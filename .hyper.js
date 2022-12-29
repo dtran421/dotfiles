@@ -152,9 +152,6 @@ module.exports = {
             buttonMargin: 4,
             prevButton: '←',
             nextButton: '→' 
-        },
-        hyperStatusLine: {
-            footerTransparent: false,
         }
         // for advanced config flags please refer to https://hyper.is/#cfg          
     },
@@ -171,8 +168,7 @@ module.exports = {
         "hyper-search",
         "hyper-chesterish",
         "gitrocket",
-        "hyper-opacity",
-        "hyper-statusline"
+        "hyper-opacity"
     ],
     // in development, you can create a directory under
     // `~/.hyper_plugins/local/` and include it here
