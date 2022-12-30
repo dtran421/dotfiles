@@ -25,6 +25,10 @@ and Lua.
 
 - [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
 
+- [wilder.nvim](https://github.com/gelguy/wilder.nvim)
+
+- [vim-be-good](https://github.com/ThePrimeagen/vim-be-good)
+
 ## Appendix
 
 - [jdhao/nvim-config](https://github.com/jdhao/nvim-config)
