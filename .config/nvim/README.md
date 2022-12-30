@@ -23,6 +23,8 @@ and Lua.
 
 - [nvim-notify](https://github.com/rcarriga/nvim-notify) 
 
+- [dashboard-nvim](https://github.com/glepnir/dashboard-nvim)
+
 ## Appendix
 
-- [jdhao/nvim-config](https://github.com/jdhao/nvim-config
+- [jdhao/nvim-config](https://github.com/jdhao/nvim-config)
