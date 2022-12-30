@@ -74,4 +74,7 @@ return require('packer').startup(function(use)
             -- config goes here
         end,
     }
+
+    -- vim-be-good
+    use('theprimeagen/vim-be-good')
 end)
