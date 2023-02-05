@@ -131,6 +131,18 @@ unset __conda_setup
 
 precmd() { echo -en "\033]0;${PWD/#$HOME/~}\007" }
 
+run_term_navigator ()
+{
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        /Users/dtran/GitHub/term-navigator/target/release/term-navigator "$1"
+    else
+        dir=$(/Users/dtran/GitHub/term-navigator/target/release/term-navigator $@)
+        cd "$dir"
+    fi
+}
+
+alias dotfiles='/usr/bin/git --git-dir=/Users/dtran/.dotfiles/ --work-tree=/Users/dtran'
+alias term_navigator=run_term_navigator
+
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-alias dotfiles='/usr/bin/git --git-dir=/Users/dtran/.dotfiles/ --work-tree=/Users/dtran'
