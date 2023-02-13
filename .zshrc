@@ -138,6 +138,7 @@ run_term_navigator ()
     else
         dir=$(/Users/dtran/GitHub/term-navigator/target/release/term-navigator $@)
         cd "$dir"
+        ls
     fi
 }
 
