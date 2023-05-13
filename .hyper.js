@@ -166,7 +166,7 @@ module.exports = {
         "hyperborder",
         "hyper-hypest",
         "hyper-search",
-        "hyper-chesterish",
+        "hyperocean" ,
         "gitrocket",
         "hyper-opacity"
     ],
