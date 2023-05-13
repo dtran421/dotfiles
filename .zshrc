@@ -111,38 +111,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/dtran/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/dtran/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/Users/dtran/opt/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/dtran/opt/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 precmd() { echo -en "\033]0;${PWD/#$HOME/~}\007" }
 
 run_term_navigator ()
 {
     if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-        /Users/dtran/GitHub/term-navigator/target/release/term-navigator "$1"
+        $HOME/GitHub/term-navigator/target/release/term-navigator "$1"
     else
-        dir=$(/Users/dtran/GitHub/term-navigator/target/release/term-navigator $@)
+        dir=$($HOME/GitHub/term-navigator/target/release/term-navigator $@)
         cd "$dir"
         ls
     fi
 }
 
-alias dotfiles='/usr/bin/git --git-dir=/Users/dtran/.dotfiles/ --work-tree=/Users/dtran'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias term_navigator=run_term_navigator
 
 # Fig post block. Keep at the bottom of this file.
