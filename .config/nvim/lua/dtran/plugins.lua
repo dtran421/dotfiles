@@ -75,6 +75,12 @@ return require('packer').startup(function(use)
         end,
     }
 
+    -- specs.nvim
+    use('edluffy/specs.nvim')
+
+    -- nvim-web-devicons
+    use('nvim-tree/nvim-web-devicons')
+
     -- vim-be-good
     use('theprimeagen/vim-be-good')
 end)
