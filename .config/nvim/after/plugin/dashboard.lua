@@ -50,3 +50,4 @@ api.nvim_create_autocmd("FileType", {
         keymap.set("n", "e", ":enew<CR>", { buffer = true, silent = true })
     end
 })
+

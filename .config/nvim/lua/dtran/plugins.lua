@@ -27,7 +27,10 @@ return require('packer').startup(function(use)
     }
 
     -- nvim-treesitter
-    use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
 
     -- harpoon
     use('theprimeagen/harpoon')
@@ -65,15 +68,14 @@ return require('packer').startup(function(use)
     use('rcarriga/nvim-notify')
 
     -- dashboard-nvim
-    use('glepnir/dashboard-nvim')
+    use {
+        'glepnir/dashboard-nvim',
+        -- event = 'VimEnter',
+        requires = {'nvim-tree/nvim-web-devicons'},
+   }
 
     -- wilder.nvim
-    use {
-        'gelguy/wilder.nvim',
-        config = function()
-            -- config goes here
-        end,
-    }
+    use('gelguy/wilder.nvim')
 
     -- specs.nvim
     use('edluffy/specs.nvim')
