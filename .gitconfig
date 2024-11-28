@@ -1,0 +1,28 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[user]
+	name = dtran
+	email = duketran2001@gmail.com
+	signingKey = ""
+[gpg]
+	program = gpg
+[commit]
+	gpgSign = false
+[tag]
+	forceSignAnnotated = false
+[core]
+	excludesFile = ~/.gitignore
+	editor = nvim
+	pager = delta
+[init]
+	defaultBranch = main
+[delta]
+	navigate = true
+    side-by-side = true
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictStyle = zdiff3

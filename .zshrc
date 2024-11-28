@@ -1,5 +1,3 @@
-# Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -84,12 +82,19 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
 source $ZSH/oh-my-zsh.sh
+source /usr/local/bin/lscolors.sh
 
-# User configuration
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
+zstyle ':completion:*' menu no
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -114,6 +119,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias edit-zsh="nvim ~/.zshrc"
+alias reload-zsh="source ~/.zshrc"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -135,17 +142,6 @@ unset __conda_setup
 
 precmd() { echo -en "\033]0;${PWD/#$HOME/~}\007" }
 
-run_term_navigator ()
-{
-    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-        $HOME/GitHub/term-navigator/target/release/term-navigator "$1"
-    else
-        dir=$($HOME/GitHub/term-navigator/target/release/term-navigator $@)
-        cd "$dir"
-        ls
-    fi
-}
-
 set-title() {
   echo -e "\e]0;$*\007"
 }
@@ -157,11 +153,85 @@ ssh() {
 }
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# ---- term-navigator (custom cd) ---- #
+ 
+run_term_navigator ()
+{
+    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+        $HOME/GitHub/term-navigator/target/release/term-navigator "$1"
+    else
+        dir=$($HOME/GitHub/term-navigator/target/release/term-navigator $@)
+        cd "$dir"
+        ls
+    fi
+}
+
 alias term_navigator=run_term_navigator
 
+# ---- eza (better ls) ---- #
+ 
+alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
+
+# ---- zoxide (better cd) ---- #
+ 
 eval "$(zoxide init zsh)"
+alias cd="z"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# ---- fzf ---- #
+ 
+eval "$(fzf --zsh)"
 
-# Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+# use fd instead of fzf
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+
+# Use fd (https://github.com/sharkdp/fd) for listing path candidates.
+# - The first argument to the function ($1) is the base path to start traversal
+# - See the source code (completion.{bash,zsh}) for the details.
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+# Use fd to generate the list for directory completion
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+source ~/fzf-git.sh/fzf-git.sh
+
+show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
+
+export FZF_CTRL_T_OPTS="--preview '$show_file_or_dir_preview'"
+export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+    export|unset) fzf --preview "eval 'echo \${}'"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview "$show_file_or_dir_preview" "$@" ;;
+  esac
+}
+
+# ---- bat (better cat) ---- #
+
+# Command to preview installed bat themes
+preview_bat() {
+  bat --list-themes | fzf --preview="bat --theme={} --color=always $1"
+}
+
+alias reload-bat="bat cache --build"
+
+export BAT_THEME=tokyonight_night
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
