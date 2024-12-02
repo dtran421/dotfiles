@@ -2,7 +2,7 @@ local lsp = require("lsp-zero")
 
 lsp.preset("recommended")
 
-lsp.ensure_installed({
+lsp.setup_servers({
   'tsserver',
   'eslint',
   'lua_ls',
@@ -35,7 +35,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
-lsp.setup_nvim_cmp({
+lsp.setup({
   mapping = cmp_mappings
 })
 
