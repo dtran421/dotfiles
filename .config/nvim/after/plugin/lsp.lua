@@ -2,17 +2,6 @@
 -- This will avoid layout shifts in screen
 vim.opt.signcolumn = 'yes'
 
-require("nvim-lsp-installer").setup({
-    automatic_installation = true, -- automatically detect which servers to install (based on which servers are set up via lspconfig)
-    ui = {
-        icons = {
-            server_installed = "✓",
-            server_pending = "➜",
-            server_uninstalled = "✗"
-        }
-    }
-})
-
 local lspconfig = require('lspconfig')
 
 local lspconfig_defaults = lspconfig.util.default_config
@@ -46,7 +35,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 lspconfig.ts_ls.setup({})
 lspconfig.eslint.setup({})
--- lspconfig.lua_ls.setup({})
 lspconfig.rust_analyzer.setup({})
 
 local cmp = require('cmp')

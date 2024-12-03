@@ -19,9 +19,13 @@ return require('packer').startup(function(use)
     
     -- telescope
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
+    }
+    use { 
+        'nvim-telescope/telescope-fzf-native.nvim', 
+        run = 'make'
     }
 
     -- nightfox theme
@@ -53,7 +57,7 @@ return require('packer').startup(function(use)
 
     -- lsp
     use {
-        'williamboman/nvim-lsp-installer',
+        -- 'williamboman/nvim-lsp-installer',
         'neovim/nvim-lspconfig',
         'hrsh7th/nvim-cmp',
         'hrsh7th/cmp-nvim-lsp',
@@ -64,7 +68,7 @@ return require('packer').startup(function(use)
 
     -- dashboard-nvim
     use {
-        'glepnir/dashboard-nvim',
+        'nvimdev/dashboard-nvim',
         -- event = 'VimEnter',
         requires = {'nvim-tree/nvim-web-devicons'},
    }
@@ -73,7 +77,7 @@ return require('packer').startup(function(use)
     use('gelguy/wilder.nvim')
 
     -- specs.nvim
-    use('edluffy/specs.nvim')
+    use('cxwx/specs.nvim')
 
     -- nvim-web-devicons
     use('nvim-tree/nvim-web-devicons')
