@@ -84,4 +84,7 @@ return require('packer').startup(function(use)
 
     -- vim-be-good
     use('theprimeagen/vim-be-good')
+
+    -- vim-tmux-navigator
+    use('christoomey/vim-tmux-navigator')
 end)
