@@ -10,11 +10,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
--- greatest remap ever
+-- paste without copying deleted into buffer?
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
--- copy into local clipboard
+-- copy selection into local clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+-- copy entire line into local clipboard
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])

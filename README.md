@@ -11,12 +11,23 @@ macOS config dotfiles
     - [fd](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
     - [fzf-git](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
 - [eza](https://github.com/eza-community/eza?tab=readme-ov-file#installation)
-- [oh-my-zsh](#)
+- [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/?tab=readme-ov-file#basic-installation)
     - [fzf-tab](https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install)
     - [LS_COLORS](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
     - [zsh-completions](https://github.com/zsh-users/zsh-completions?tab=readme-ov-file#using-zsh-frameworks)
+- [tmux](https://github.com/tmux/tmux/wiki/Installing)
+    - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
+    - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
 
 ## Package Installation
+
+### MacOSX
+
+Run this command:
+
+```
+brew bundle install --file=.Brewfile
+```
 
 ### Linux
 

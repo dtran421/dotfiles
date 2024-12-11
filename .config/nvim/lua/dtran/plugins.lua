@@ -17,6 +17,14 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     
+    -- THEMES --
+    
+    -- nightfox theme
+    -- use "EdenEast/nightfox.nvim"
+
+    -- tokyonight theme
+    use "folke/tokyonight.nvim"
+
     -- telescope
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.8',
@@ -27,9 +35,6 @@ return require('packer').startup(function(use)
         'nvim-telescope/telescope-fzf-native.nvim', 
         run = 'make'
     }
-
-    -- nightfox theme
-    use "EdenEast/nightfox.nvim"
 
     -- better-escape
     use { 'jdhao/better-escape.vim', event = 'InsertEnter' }
