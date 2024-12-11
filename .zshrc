@@ -10,7 +10,6 @@ fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-source ~/.bash_profile
 
 # Path for Go
 export GO111MODULE=on
@@ -82,7 +81,7 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
 source $ZSH/oh-my-zsh.sh
@@ -138,6 +137,7 @@ else
     fi
 fi
 unset __conda_setup
+export CONDA_AUTO_ACTIVATE_BASE=false
 # <<< conda initialize <<<
 
 precmd() { echo -en "\033]0;${PWD/#$HOME/~}\007" }
@@ -153,21 +153,6 @@ ssh() {
 }
 
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-# ---- term-navigator (custom cd) ---- #
- 
-run_term_navigator ()
-{
-    if [[ "$1" == "-h" || "$1" == "--help" ]]; then
-        $HOME/GitHub/term-navigator/target/release/term-navigator "$1"
-    else
-        dir=$($HOME/GitHub/term-navigator/target/release/term-navigator $@)
-        cd "$dir"
-        ls
-    fi
-}
-
-alias term_navigator=run_term_navigator
 
 # ---- eza (better ls) ---- #
  
@@ -222,7 +207,7 @@ _fzf_comprun() {
   esac
 }
 
-# ---- bat (better cat) ---- #
+# ---- bat (better less) ---- #
 
 # Command to preview installed bat themes
 preview_bat() {
@@ -233,5 +218,4 @@ alias reload-bat="bat cache --build"
 
 export BAT_THEME=tokyonight_night
 
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+source init.zsh
