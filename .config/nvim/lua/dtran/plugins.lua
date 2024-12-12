@@ -21,9 +21,12 @@ return require('packer').startup(function(use)
     
     -- nightfox theme
     -- use "EdenEast/nightfox.nvim"
-
+     
     -- tokyonight theme
     use "folke/tokyonight.nvim"
+    
+    -- catppuccin theme
+    use { "catppuccin/nvim", as = "catppuccin" }
 
     -- telescope
     use {

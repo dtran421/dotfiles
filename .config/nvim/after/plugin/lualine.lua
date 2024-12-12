@@ -1,7 +1,11 @@
 require('lualine').setup {
     options = {
-        -- theme = 'nightfly'
-        theme = 'tokyonight'
-    }
+        theme = 'catppuccin',
+        component_separators = { left = ')', right = '('},
+        section_separators = { left = '', right = ''},
+    },
+    sections = {
+        lualine_x = {'filetype'},
+    },
 }
 
