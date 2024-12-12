@@ -3,6 +3,8 @@ macOS config dotfiles
 
 ## Packages
 
+- [wezterm](https://wezfurlong.org/wezterm/installation.html)
+    - [wezterm-icon](https://github.com/mikker/wezterm-icon?tab=readme-ov-file#installation)
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
     - [tokyonight](https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#-installation)
     > Use [this comment](https://github.com/folke/tokyonight.nvim/issues/23#issuecomment-1581586548) to install for `bat`
@@ -18,6 +20,7 @@ macOS config dotfiles
 - [tmux](https://github.com/tmux/tmux/wiki/Installing)
     - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
     - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
+- [**NEW!**] [yazi](https://yazi-rs.github.io/docs/installation)
 
 ## Package Installation
 
