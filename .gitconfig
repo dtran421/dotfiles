@@ -21,7 +21,7 @@
 	defaultBranch = main
 [delta]
 	navigate = true
-    side-by-side = true
+  side-by-side = true
 [interactive]
 	diffFilter = delta --color-only
 [merge]

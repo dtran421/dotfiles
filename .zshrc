@@ -81,7 +81,8 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+# NOTE: track https://github.com/zsh-users/zsh-autosuggestions/pull/753 to fix `git` issue
+plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
 source $ZSH/oh-my-zsh.sh
@@ -147,7 +148,7 @@ set-title() {
 }
 
 ssh() {
-  set-title $*
+  set-title $*;
   /usr/bin/ssh -2 $*;
   set-title $HOST;
 }
@@ -155,12 +156,15 @@ ssh() {
 source ~/init.zsh
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
+# Prevent shell from closing on Ctrl + d
+set -o ignoreeof
+
 # ---- eza (better ls) ---- #
  
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # ---- zoxide (better cd) ---- #
- 
+
 eval "$(zoxide init zsh)"
 alias cd="z"
 
@@ -218,5 +222,3 @@ preview_bat() {
 alias reload-bat="bat cache --build"
 
 export BAT_THEME=tokyonight_night
-
-export PATH=$PATH:$HOME/.toolbox/bin
