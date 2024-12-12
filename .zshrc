@@ -217,5 +217,3 @@ preview_bat() {
 alias reload-bat="bat cache --build"
 
 export BAT_THEME=tokyonight_night
-
-source init.zsh

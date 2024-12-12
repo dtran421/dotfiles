@@ -2,16 +2,16 @@ local wilder = require('wilder')
 wilder.setup({ modes = { ':', '/', '?' } })
 
 local gradient = {
-	'#F746B3','#F74DAC','#F755A5','#F85C9E',
-	'#F86497','#F86B90','#F87389','#F87A82',
-	'#F9827C','#F98975','#F9916E','#F99867',
-	'#F9A060','#FAA759','#FAAF52','#FAB64B'
+  '#F746B3','#F74DAC','#F755A5','#F85C9E',
+  '#F86497','#F86B90','#F87389','#F87A82',
+  '#F9827C','#F98975','#F9916E','#F99867',
+  '#F9A060','#FAA759','#FAAF52','#FAB64B'
 }
 
 wilder.set_option('pipeline', {
   wilder.branch(
-    wilder.cmdline_pipeline(),
-    wilder.search_pipeline()
+  wilder.cmdline_pipeline(),
+  wilder.search_pipeline()
   ),
 })
 
@@ -27,7 +27,7 @@ wilder.set_option('renderer', wilder.popupmenu_renderer({
   },
   -- highlighter applies highlighting to the candidates
   highlighter = wilder.highlighter_with_gradient({
-      wilder.basic_highlighter(),
+    wilder.basic_highlighter(),
   }),
   left = {' ', wilder.popupmenu_devicons()},
   right = {' ', wilder.popupmenu_scrollbar()},
