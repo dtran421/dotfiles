@@ -10,7 +10,7 @@ config.colors = {
   background = '#181826',
 }
 config.font =
-wezterm.font('JetBrains Mono', { weight = 'DemiBold' })
+  wezterm.font('JetBrains Mono', { weight = 'DemiBold' })
 config.font_size = 16.0
 
 config.keys = {}
