@@ -81,7 +81,8 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
+# NOTE: track https://github.com/zsh-users/zsh-autosuggestions/pull/753 to fix `git` issue
+plugins=(git fzf-tab zsh-autosuggestions zsh-syntax-highlighting)
 
 fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
 source $ZSH/oh-my-zsh.sh
