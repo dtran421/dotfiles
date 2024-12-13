@@ -119,8 +119,15 @@ zstyle ':completion:*:git-checkout:*' sort false
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias edit-zsh="nvim ~/.zshrc"
-alias reload-zsh="source ~/.zshrc"
+alias conf-zsh="nvim ~/.zshrc"
+alias conf-init="nvim ~/.init.zsh"
+alias conf-p10k="nvim ~/.p10k.zsh"
+alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
+alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
+alias conf-wezterm="nvim ~/.config/wezterm/wezterm.lua"
+
+alias rld-zsh="source ~/.zshrc"
+alias rld-p10k="source ~/.p10k.zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -153,7 +160,7 @@ ssh() {
   set-title $HOST;
 }
 
-source ~/init.zsh
+source ~/.init.zsh
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Prevent shell from closing on Ctrl + d
