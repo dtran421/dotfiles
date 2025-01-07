@@ -1,0 +1,18 @@
+# Reload using `cmd+shift+,`
+
+window-height = 26
+window-width = 90
+
+font-family = JetBrains Mono
+font-size = 16
+font-thicken = true
+
+theme = catppuccin-mocha
+background = 181826
+
+cursor-style = block
+shell-integration-features = no-cursor
+
+macos-icon = custom-style
+macos-icon-frame = chrome
+macos-titlebar-style = tabs
