@@ -124,7 +124,7 @@ alias conf-init="nvim ~/.init.zsh"
 alias conf-p10k="nvim ~/.p10k.zsh"
 alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
-alias conf-wezterm="nvim ~/.config/wezterm/wezterm.lua"
+alias conf-ghostty="nvim ~/.config/ghostty/config"
 
 alias rld-zsh="source ~/.zshrc"
 alias rld-p10k="source ~/.p10k.zsh"
