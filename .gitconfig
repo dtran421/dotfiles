@@ -14,7 +14,7 @@
 [tag]
 	forceSignAnnotated = false
 [core]
-	excludesFile = ~/.gitignore
+	excludesFile = ~/.gitignore_global
 	editor = nvim
 	pager = delta
 [init]
