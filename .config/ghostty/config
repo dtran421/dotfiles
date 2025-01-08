@@ -1,7 +1,14 @@
-# Reload using `cmd+shift+,`
+# Reload using `cmd+r`
 
-window-height = 26
-window-width = 90
+auto-update = check
+
+window-height = 28
+window-width = 100
+window-decoration = true
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+window-save-state = always
 
 font-family = JetBrains Mono
 font-size = 16
@@ -9,10 +16,16 @@ font-thicken = true
 
 theme = catppuccin-mocha
 background = 181826
+background-opacity = 0.75
+background-blur-radius = 20
 
 cursor-style = block
 shell-integration-features = no-cursor
 
 macos-icon = custom-style
-macos-icon-frame = chrome
-macos-titlebar-style = tabs
+macos-icon-ghost-color = 9e0059
+macos-icon-screen-color = 390099
+macos-icon-frame = plastic
+macos-titlebar-style = transparent
+
+keybind = super+r=reload_config
