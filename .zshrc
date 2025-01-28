@@ -232,3 +232,5 @@ alias reload-bat="bat cache --build"
 export BAT_THEME=tokyonight_night
 
 neofetch
+
+eval $(thefuck --alias)

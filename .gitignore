@@ -1,0 +1,10 @@
+.init.zsh
+
+**/packer_compiled.lua
+**/__pycache__
+
+.config/karabiner/automatic_backups
+.config/neonctl
+.config/raycast
+.config/tmux/plugins
+.config/yarn
