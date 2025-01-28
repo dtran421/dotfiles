@@ -1,10 +1,10 @@
 # dotfiles
-macOS config dotfiles
+
+Hey there 👋! These are my macOS/Linux config dotfiles
 
 ## Packages
 
-- [wezterm](https://wezfurlong.org/wezterm/installation.html)
-    - [wezterm-icon](https://github.com/mikker/wezterm-icon?tab=readme-ov-file#installation)
+- [ghostty](https://ghostty.org/docs/install/binary)
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
     - [tokyonight](https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#-installation)
     > Use [this comment](https://github.com/folke/tokyonight.nvim/issues/23#issuecomment-1581586548) to install for `bat`
@@ -22,15 +22,50 @@ macOS config dotfiles
     - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
 - [**NEW!**] [yazi](https://yazi-rs.github.io/docs/installation)
 
+## Installation
+
+### Prerequisities
+
+Make sure you install the following:
+
+#### Brew (or nix-env)
+
+#### Git
+
+```sh
+$ brew install git
+```
+
+#### Stow
+
+```sh
+$ brew install stow
+```
+
+### MacOS
+
+First, checkout this dotfiles repo in your $HOME directory using git
+
+```sh
+$ git clone git@github.com/dtran421/dotfiles.git
+```
+
+Use GNU Stow to create symlinks to $HOME directory
+
+```sh
+$ cd dotfiles
+$ stow .
+```
+
+Run this command to install dependencies
+
+```sh
+$ brew bundle install --file=.Brewfile
+```
+
 ## Package Installation
 
-### MacOSX
-
-Run this command:
-
-```
-brew bundle install --file=.Brewfile
-```
+Try to use `brew` for MacOS, otherwise look for download links.
 
 ### Linux
 
@@ -40,18 +75,24 @@ brew bundle install --file=.Brewfile
 
 ## Committing Changes
 
-First, ensure you're in the root folder `~/`. Make changes to a dotfile. Then, run the following commands:
+First, ensure you're in the dotfiles folder `$HOME/dotfiles`. Make changes to a dotfile. Then, run the following commands:
 
 ```sh
-    dotfiles <add/stage> <dotfile name>
+$ git add <dotfile name>
 ```
 
 ```sh
-    dotfiles commit -m <commit message>
+$ git commit -m <commit message>
 ```
 
 ```sh
-    dotfiles push
+$ git push
+```
+
+Lastly, make sure to sync your changes with the $HOME directory if you edited the dotfiles directly
+
+```sh
+$ stow .
 ```
 
 

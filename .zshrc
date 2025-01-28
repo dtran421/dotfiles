@@ -160,12 +160,9 @@ ssh() {
 }
 
 source ~/.init.zsh
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Prevent shell from closing on Ctrl + d
 set -o ignoreeof
-
-export PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 
 # ---- eza (better ls) ---- #
  
