@@ -1,6 +1,5 @@
 .init.zsh
 
-**/packer_compiled.lua
 **/__pycache__
 
 .config/karabiner/automatic_backups
