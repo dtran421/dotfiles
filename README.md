@@ -6,21 +6,23 @@ Hey there 👋! These are my macOS/Linux config dotfiles
 
 - [ghostty](https://ghostty.org/docs/install/binary)
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
-    - [tokyonight](https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#-installation)
-    > Use [this comment](https://github.com/folke/tokyonight.nvim/issues/23#issuecomment-1581586548) to install for `bat`
+  - [tokyonight](https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#-installation)
+    > Use [this comment](https://github.com/folke/tokyonight.nvim/issues/23#issuecomment-1581586548)
+    > to install for `bat`
 - [delta](https://dandavison.github.io/delta/installation.html)
 - [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
-    - [fd](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
-    - [fzf-git](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
+  - [fd](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
+  - [fzf-git](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
 - [eza](https://github.com/eza-community/eza?tab=readme-ov-file#installation)
 - [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh/?tab=readme-ov-file#basic-installation)
-    - [fzf-tab](https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install)
-    - [LS_COLORS](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
-    - [zsh-completions](https://github.com/zsh-users/zsh-completions?tab=readme-ov-file#using-zsh-frameworks)
+  - [fzf-tab](https://github.com/Aloxaf/fzf-tab?tab=readme-ov-file#install)
+  - [LS_COLORS](https://github.com/trapd00r/LS_COLORS?tab=readme-ov-file#installation)
+  - [zsh-completions](https://github.com/zsh-users/zsh-completions?tab=readme-ov-file#using-zsh-frameworks)
 - [tmux](https://github.com/tmux/tmux/wiki/Installing)
-    - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
-    - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
+  - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
+  - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
 - [**NEW!**] [yazi](https://yazi-rs.github.io/docs/installation)
+- [**NEW!**] [lazygit](https://github.com/jesseduffield/lazygit)
 
 ## Installation
 
@@ -33,13 +35,13 @@ Make sure you install the following:
 #### Git
 
 ```sh
-$ brew install git
+brew install git
 ```
 
 #### Stow
 
 ```sh
-$ brew install stow
+brew install stow
 ```
 
 ### MacOS
@@ -47,20 +49,20 @@ $ brew install stow
 First, checkout this dotfiles repo in your $HOME directory using git
 
 ```sh
-$ git clone git@github.com/dtran421/dotfiles.git
+git clone git@github.com/dtran421/dotfiles.git
 ```
 
 Use GNU Stow to create symlinks to $HOME directory
 
 ```sh
-$ cd dotfiles
-$ stow .
+cd dotfiles
+stow .
 ```
 
 Run this command to install dependencies
 
 ```sh
-$ brew bundle install --file=.Brewfile
+brew bundle install --file=.Brewfile
 ```
 
 ## Package Installation
@@ -75,26 +77,27 @@ Try to use `brew` for MacOS, otherwise look for download links.
 
 ## Committing Changes
 
-First, ensure you're in the dotfiles folder `$HOME/dotfiles`. Make changes to a dotfile. Then, run the following commands:
+First, ensure you're in the dotfiles folder `$HOME/dotfiles`. Make changes to a dotfile.
+Then, run the following commands:
 
 ```sh
-$ git add <dotfile name>
+git add <dotfile name>
 ```
 
 ```sh
-$ git commit -m <commit message>
+git commit -m <commit message>
 ```
 
 ```sh
-$ git push
+git push
 ```
 
-Lastly, make sure to sync your changes with the $HOME directory if you edited the dotfiles directly
+Lastly, make sure to sync your changes with the `$HOME` directory if you edited
+the dotfiles directly
 
 ```sh
-$ stow .
+stow .
 ```
-
 
 ## Appendix
 
