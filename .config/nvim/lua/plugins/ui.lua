@@ -163,6 +163,7 @@ return {
         section_separators = { left = "", right = "" },
       },
       sections = {
+        -- Tracking issue with bubble background transparency here: https://github.com/nvim-lualine/lualine.nvim/issues/1363
         lualine_a = { { "mode", separator = { left = "", right = "" } } },
         lualine_b = { "none" },
         lualine_x = {
