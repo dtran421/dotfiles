@@ -1,6 +1,7 @@
 .init.zsh
 
 **/__pycache__
+*.log
 
 .config/karabiner/automatic_backups
 .config/neonctl
