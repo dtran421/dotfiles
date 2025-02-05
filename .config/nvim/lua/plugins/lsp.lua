@@ -131,6 +131,16 @@ return {
     },
   },
 
+  -- LSP keymaps
+  {
+    "neovim/nvim-lspconfig",
+    opts = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- disable Rename for IncRename
+      keys[#keys + 1] = { "<leader>cr", false }
+    end,
+  },
+
   {
     "folke/lazydev.nvim",
     ft = "lua",
