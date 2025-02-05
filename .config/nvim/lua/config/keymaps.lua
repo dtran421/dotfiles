@@ -71,6 +71,7 @@ keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
 keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
 
 -- Find and replace all
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+keymap.set("n", "<leader>sa", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 -- Make current file executable
 keymap.set("n", "<leader>fx", "<cmd>!chmod +x %<CR>", { silent = true })
