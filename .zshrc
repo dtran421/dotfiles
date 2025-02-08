@@ -159,8 +159,6 @@ ssh() {
   set-title $HOST;
 }
 
-source ~/.init.zsh
-
 # Prevent shell from closing on Ctrl + d
 set -o ignoreeof
 
@@ -228,7 +226,18 @@ alias reload-bat="bat cache --build"
 
 export BAT_THEME=tokyonight_night
 
-neofetch
+# ---- yazi ---- #
+
+export EDITOR=nvim
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
 eval $(thefuck --alias)
 
@@ -236,3 +245,8 @@ eval $(thefuck --alias)
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-3.4.1
+
+# ---- END OF CONFIG ---- #
+
+neofetch
+source ~/.init.zsh

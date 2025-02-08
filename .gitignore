@@ -2,8 +2,10 @@
 
 **/__pycache__
 
+.config/bat/themes
 .config/karabiner/automatic_backups
 .config/neonctl
 .config/raycast
 .config/tmux/plugins
 .config/yarn
+.config/yazi/flavors
