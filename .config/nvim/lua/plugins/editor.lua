@@ -5,6 +5,7 @@ return {
     event = "BufReadPre",
     opts = {},
   },
+
   {
     "telescope.nvim",
     priority = 1000,
