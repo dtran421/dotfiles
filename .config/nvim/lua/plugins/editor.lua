@@ -155,6 +155,7 @@ return {
     opts_extend = { "spec" },
     opts = {
       spec = {
+        { "<C-space>", hidden = true },
         { "<leader>d", hidden = true },
         { "<leader>Q", desc = "Quit all", mode = "n" },
         { "<leader>cr", desc = "Rename", mode = "n" },
