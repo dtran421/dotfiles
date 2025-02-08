@@ -6,9 +6,7 @@ Hey there 👋! These are my macOS/Linux config dotfiles
 
 - [ghostty](https://ghostty.org/docs/install/binary)
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation)
-  - [tokyonight](https://github.com/folke/tokyonight.nvim?tab=readme-ov-file#-installation)
-    > Use [this comment](https://github.com/folke/tokyonight.nvim/issues/23#issuecomment-1581586548)
-    > to install for `bat`
+  - [catppuccin](https://github.com/catppuccin/bat?tab=readme-ov-file#usage)
 - [delta](https://dandavison.github.io/delta/installation.html)
 - [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
   - [fd](https://github.com/sharkdp/fd?tab=readme-ov-file#installation)
@@ -21,8 +19,9 @@ Hey there 👋! These are my macOS/Linux config dotfiles
 - [tmux](https://github.com/tmux/tmux/wiki/Installing)
   - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
   - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
+- [lazygit](https://github.com/jesseduffield/lazygit)
 - [**NEW!**] [yazi](https://yazi-rs.github.io/docs/installation)
-- [**NEW!**] [lazygit](https://github.com/jesseduffield/lazygit)
+  - [catppuccin](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi#-installation)
 
 ## Installation
 
