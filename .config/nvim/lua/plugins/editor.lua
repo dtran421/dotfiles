@@ -160,7 +160,7 @@ return {
         { "<leader>Q", desc = "Quit all", mode = "n" },
         { "<leader>cr", desc = "Rename", mode = "n" },
         { "<leader>fx", desc = "Modify file to be executable", mode = "n" },
-        { "<leader>sa", desc = "Search and replace all", mode = "n" },
+        { "<leader>r", desc = "Search and replace all", mode = "n" },
         { "<leader>y", desc = "Copy selection into clipboard", mode = "v" },
         { "<leader>Y", desc = "Copy line into clipboard", mode = "n" },
       },

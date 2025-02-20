@@ -239,6 +239,10 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# ---- lazygit ---- #
+
+alias lg=lazygit
+
 eval $(thefuck --alias)
 
 # Ruby

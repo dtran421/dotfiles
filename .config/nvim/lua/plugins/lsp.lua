@@ -22,6 +22,12 @@ return {
         cssls = {},
 
         tailwindcss = {
+          -- exclude a filetype from the default_config
+          filetypes_exclude = { "markdown" },
+          -- add additional filetypes to the default_config
+          filetypes_include = {},
+          -- to fully override the default_config, change the below
+          -- filetypes = {}
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
@@ -56,26 +62,22 @@ return {
             },
           },
         },
+
         html = {},
+
         lua_ls = {
-          -- enabled = false,
           single_file_support = true,
           settings = {
             Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
               workspace = {
                 checkThirdParty = false,
+              },
+              codeLens = {
+                enable = true,
               },
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
-              },
-              misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
               },
               hint = {
                 enable = true,
@@ -93,8 +95,7 @@ return {
               },
               diagnostics = {
                 disable = { "incomplete-signature-doc", "trailing-space" },
-                -- enable = false,
-                globals = { "vim" },
+                globals = { "vim", "LazyVim" },
                 groupSeverity = {
                   strong = "Warning",
                   strict = "Warning",
@@ -116,7 +117,6 @@ return {
                 unusedLocalExclude = { "_*" },
               },
               format = {
-                -- enable = false,
                 defaultConfig = {
                   indent_style = "space",
                   indent_size = "2",
@@ -127,7 +127,25 @@ return {
           },
         },
       },
-      setup = {},
+
+      setup = {
+        tailwindcss = function(_, opts)
+          local tw = LazyVim.lsp.get_raw_config("tailwindcss")
+          opts.filetypes = opts.filetypes or {}
+
+          -- Add default filetypes
+          vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+
+          -- Remove excluded filetypes
+          --- @param ft string
+          opts.filetypes = vim.tbl_filter(function(ft)
+            return not vim.tbl_contains(opts.filetypes_exclude or {}, ft)
+          end, opts.filetypes)
+
+          -- Add additional filetypes
+          vim.list_extend(opts.filetypes, opts.filetypes_include or {})
+        end,
+      },
     },
   },
 
@@ -152,10 +170,15 @@ return {
     },
   },
 
+  { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} },
+
   {
     "saghen/blink.cmp",
+    optional = true,
+    dependencies = { "supermaven-nvim", "saghen/blink.compat" },
     opts = {
       sources = {
+        compat = { "supermaven" },
         default = { "lazydev", "lsp", "path", "snippets", "buffer" },
         providers = {
           lazydev = {
@@ -163,6 +186,11 @@ return {
             module = "lazydev.integrations.blink",
             -- make lazydev completions top priority (see `:h blink.cmp`)
             score_offset = 100,
+          },
+          supermaven = {
+            kind = "Supermaven",
+            score_offset = 100,
+            async = true,
           },
         },
       },

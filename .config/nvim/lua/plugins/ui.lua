@@ -2,27 +2,41 @@ return {
   -- messages, cmdline and the popupmenu
   {
     "folke/noice.nvim",
-    opts = function(_, opts)
-      opts.commands = {
+    opts = {
+      commands = {
         all = {
           -- options for the message history that you get with `:Noice`
           view = "split",
           opts = { enter = true, format = "details" },
           filter = {},
         },
-      }
-
-      opts.presets.lsp_doc_border = true
-    end,
+      },
+      presets = {
+        lsp_doc_border = true,
+      },
+      lsp = {
+        hover = {
+          silent = nil,
+        },
+      },
+    },
   },
 
   {
-    "rcarriga/nvim-notify",
-    opts = {
-      timeout = 5000,
-      background_colour = "#000000",
-      render = "wrapped-compact",
-    },
+    "folke/noice.nvim",
+    opts = function(_, opts)
+      vim.list_extend(opts.routes, {
+        {
+          filter = {
+            event = "msg_show",
+            any = {
+              { find = "Starting Supermaven" },
+              { find = "Supermaven Free Tier" },
+            },
+          },
+        },
+      })
+    end,
   },
 
   -- buffer line
@@ -186,6 +200,15 @@ return {
         },
       },
     },
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    optional = true,
+    event = "VeryLazy",
+    opts = function(_, opts)
+      table.insert(opts.sections.lualine_x, 2, LazyVim.lualine.cmp_source("supermaven"))
+    end,
   },
 
   -- LazyGit integration with Telescope

@@ -22,7 +22,7 @@ vim.opt.laststatus = 0
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
 
-vim.opt.guicursor = ""
+vim.opt.guicursor = "i:block-blinkwait800-blinkon400-blinkoff400"
 vim.opt.mouse = ""
 
 vim.opt.shiftwidth = 2
