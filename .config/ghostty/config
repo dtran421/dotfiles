@@ -27,5 +27,6 @@ macos-icon-ghost-color = 9e0059
 macos-icon-screen-color = 390099
 macos-icon-frame = plastic
 macos-titlebar-style = transparent
+macos-titlebar-proxy-icon = hidden
 
 keybind = super+r=reload_config
