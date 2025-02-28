@@ -1,28 +1,9 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Path for Go
 export GO111MODULE=on
 export PATH=$PATH:~/go/bin
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -118,16 +99,16 @@ zstyle ':completion:*:git-checkout:*' sort false
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias conf-zsh="nvim ~/.zshrc"
 alias conf-init="nvim ~/.init.zsh"
-alias conf-p10k="nvim ~/.p10k.zsh"
+alias conf-omp="nvim ~/.config/ohmyposh/config.toml"
 alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 
 alias rld-zsh="source ~/.zshrc"
-alias rld-p10k="source ~/.p10k.zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
+  eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+fi
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
