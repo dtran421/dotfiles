@@ -108,6 +108,7 @@ alias conf-omp="nvim ~/.config/ohmyposh/config.toml"
 alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
+alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
 
 alias rld-zsh="source ~/.zshrc"
 

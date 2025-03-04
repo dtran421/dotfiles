@@ -20,8 +20,10 @@ Hey there 👋! These are my macOS/Linux config dotfiles
   - [tpm](https://github.com/tmux-plugins/tpm?tab=readme-ov-file#installation)
   - [gitmux](https://github.com/arl/gitmux?tab=readme-ov-file#installing)
 - [lazygit](https://github.com/jesseduffield/lazygit)
-- [**NEW!**] [yazi](https://yazi-rs.github.io/docs/installation)
+- [yazi](https://yazi-rs.github.io/docs/installation)
   - [catppuccin](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi#-installation)
+- [aerospace](https://nikitabobko.github.io/AeroSpace/guide#installation)
+  - [JankyBorders](https://nikitabobko.github.io/AeroSpace/guide#installation)
 
 ## Installation
 
@@ -72,7 +74,7 @@ Try to use `brew` for MacOS, otherwise look for download links.
 
 1. For x86_64 Linux, download the `musl` or `amd64` binary file
 2. Move the file to the `/usr/local/bin/` directory
-3. Reload `zsh` via `reload-zsh`
+3. Reload `zsh` via `rld-zsh`
 
 ## Committing Changes
 
@@ -97,9 +99,3 @@ the dotfiles directly
 ```sh
 stow .
 ```
-
-## Appendix
-
-- [Bitbucket Tutorial](https://www.atlassian.com/git/tutorials/dotfiles)
-
-- [Medium Article](https://fwuensche.medium.com/how-to-manage-your-dotfiles-with-git-f7aeed8adf8b)
