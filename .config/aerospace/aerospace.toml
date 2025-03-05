@@ -61,7 +61,7 @@ automatically-unhide-macos-hidden-apps = true
   inner.vertical   = 12
   outer.left       = 24
   outer.bottom     = 24
-  outer.top        = 24
+  outer.top        = 64
   outer.right      = 24
 
 [workspace-to-monitor-force-assignment]
