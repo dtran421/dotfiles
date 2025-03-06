@@ -7,7 +7,15 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders hidpi=on active_color="glow(0xff8b5cf6)" inactive_color=0xff452e7b width=14.0',
+  'exec-and-forget borders hidpi=on active_color="glow(0xffcba5f7)" inactive_color=0xff8e73ad width=14.0',
+  'exec-and-forget sketchybar',
+]
+
+# Notify Sketchybar about workspace change
+exec-on-workspace-change = [
+  '/bin/bash',
+  '-c',
+  'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE PREVIOUS_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
 ]
 
 # Start AeroSpace at login
@@ -61,7 +69,7 @@ automatically-unhide-macos-hidden-apps = true
   inner.vertical   = 12
   outer.left       = 24
   outer.bottom     = 24
-  outer.top        = 64
+  outer.top        = 72
   outer.right      = 24
 
 [workspace-to-monitor-force-assignment]
@@ -71,6 +79,7 @@ automatically-unhide-macos-hidden-apps = true
   C = 'main'
 
   2 = ['secondary', 'G237HL', 'P27h-28 (1)']
+  S = ['secondary', 'G237HL', 'P27h-28 (1)']
   E = ['secondary', 'G237HL', 'P27h-28 (1)']
 
   3 = 'built-in'
@@ -138,6 +147,8 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-cmd-e = 'workspace E'
   # Code
   ctrl-cmd-c = 'workspace C'
+  # Secondary
+  ctrl-cmd-s = 'workspace S'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
   ctrl-cmd-1 = 'workspace 1'
@@ -176,6 +187,7 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-alt-9 = 'move-node-to-workspace 9'
   ctrl-alt-a = 'move-node-to-workspace A'
   ctrl-alt-b = 'move-node-to-workspace B'
+  ctrl-alt-c = 'move-node-to-workspace C'
   ctrl-alt-d = 'move-node-to-workspace D'
   ctrl-alt-e = 'move-node-to-workspace E'
   ctrl-alt-g = 'move-node-to-workspace G'
@@ -202,27 +214,68 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-cmd-tab = 'workspace-back-and-forth'
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-  ctrl-alt-space = 'mode service'
+  ctrl-alt-space = [
+    'mode service',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=service',
+  ]
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-  esc = ['mode main']
-  r = ['reload-config', 'mode main']
-  minus = ['flatten-workspace-tree', 'mode main'] # reset layout
+  esc = [
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+
+  r = [
+    'reload-config',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+
+  # reset layout
+  minus = [
+    'flatten-workspace-tree',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+
+  # Toggle between floating and tiling layout
   f = [
     'layout floating tiling',
     'mode main',
-  ] # Toggle between floating and tiling layout
-  backspace = ['close-all-windows-but-current', 'mode main']
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+
+  backspace = [
+    'close-all-windows-but-current',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
 
   # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
   #s = ['layout sticky tiling', 'mode main']
 
-  ctrl-alt-h = ['join-with left', 'mode main']
-  ctrl-alt-j = ['join-with down', 'mode main']
-  ctrl-alt-k = ['join-with up', 'mode main']
-  ctrl-alt-l = ['join-with right', 'mode main']
+  ctrl-alt-h = [
+    'join-with left',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+  ctrl-alt-j = [
+    'join-with down',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+  ctrl-alt-k = [
+    'join-with up',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
+  ctrl-alt-l = [
+    'join-with right',
+    'mode main',
+    'exec-and-forget sketchybar --trigger aerospace_mode_change MODE=main',
+  ]
 
 [[on-window-detected]]
   if.app-id = 'company.thebrowser.Browser'
