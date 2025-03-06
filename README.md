@@ -24,6 +24,24 @@ Hey there 👋! These are my macOS/Linux config dotfiles
   - [catppuccin](https://github.com/yazi-rs/flavors/tree/main/catppuccin-mocha.yazi#-installation)
 - [aerospace](https://nikitabobko.github.io/AeroSpace/guide#installation)
   - [JankyBorders](https://nikitabobko.github.io/AeroSpace/guide#installation)
+- [sketchybar](https://felixkratz.github.io/SketchyBar/setup#installation)
+
+  - [SbarLua](https://github.com/FelixKratz/SbarLua?tab=readme-ov-file#lua-module)
+
+  ```sh
+    git clone https://github.com/FelixKratz/SbarLua.git /tmp/SbarLua && \
+    cd /tmp/SbarLua/ && \
+    make install && \
+    rm -rf /tmp/SbarLua/
+  ```
+
+  - [sketchybar-app-font](https://github.com/kvndrsslr/sketchybar-app-font?tab=readme-ov-file#cli-usage)
+
+  ```sh
+    curl \
+    -L https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.32/sketchybar-app-font.ttf \
+    -o $HOME/Library/Fonts/sketchybar-app-font.ttf
+  ```
 
 ## Installation
 

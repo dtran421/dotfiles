@@ -4,12 +4,14 @@ local colors = require("colors")
 local whitelist = { ["Spotify"] = true, ["Music"] = true }
 
 local media_cover = sbar.add("item", {
+	padding_right = 0,
 	position = "right",
 	background = {
 		image = {
 			string = "media.artwork",
 			scale = 0.85,
 		},
+		---@type number
 		color = colors.transparent,
 	},
 	label = { drawing = false },
@@ -32,6 +34,7 @@ local media_artist = sbar.add("item", {
 	label = {
 		width = 0,
 		font = { size = 9 },
+		---@type number
 		color = colors.with_alpha(colors.white, 0.6),
 		max_chars = 18,
 		y_offset = 6,

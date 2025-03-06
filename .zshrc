@@ -55,7 +55,6 @@ ENABLE_CORRECTION="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 zstyle ':omz:plugins:alias-finder' autoload yes
-zstyle ':omz:plugins:alias-finder' longer yes
 zstyle ':omz:plugins:alias-finder' cheaper yes
 
 zstyle ':omz:plugins:yarn' berry yes

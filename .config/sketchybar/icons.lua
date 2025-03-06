@@ -51,6 +51,10 @@ local icons = {
 		cpu = "",
 		clipboard = "􀉄",
 
+		aerospace = {
+			main = "",
+			service = "",
+		},
 		switch = {
 			on = "󱨥",
 			off = "󱨦",
