@@ -81,7 +81,7 @@ stow .
 Run this command to install dependencies
 
 ```sh
-brew bundle install --file=.Brewfile
+brew bundle install
 ```
 
 ## Package Installation
@@ -109,11 +109,4 @@ git commit -m <commit message>
 
 ```sh
 git push
-```
-
-Lastly, make sure to sync your changes with the `$HOME` directory if you edited
-the dotfiles directly
-
-```sh
-stow .
 ```
