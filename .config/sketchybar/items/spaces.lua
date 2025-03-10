@@ -13,6 +13,19 @@ local WINDOW_NAME_REGEX = "^%s*(.-)%s*|%s*.*%s*$"
 local spaces = {}
 Mode_indicator = nil
 
+local trim = function(s)
+	local l = 1
+	while string.sub(s, l, l) == " " do
+		l = l + 1
+	end
+
+	local r = #s
+	while string.sub(s, r, r) == " " do
+		r = r - 1
+	end
+	return string.sub(s, l, r)
+end
+
 local get_space_icons = function(windows)
 	local has_app = false
 	local workspace_icons = ""
@@ -23,12 +36,11 @@ local get_space_icons = function(windows)
 		local app_match = string.match(window, AEROSPACE_WINDOW_REGEX)
 		local app = string.gsub(string.sub(app_match, 2, #app_match - 1), WINDOW_NAME_REGEX, "%1")
 
-		for trimmed_app in string.gmatch(app, EMPTY_SPACE_REGEX) do
-			local lookup = app_icons[trimmed_app]
-			local icon = ((lookup == nil) and app_icons["Default"] or lookup)
-			workspace_icons = workspace_icons .. " " .. icon
-			break
-		end
+		local trimmed_app = trim(app)
+		local lookup = app_icons[trimmed_app]
+		local icon = ((lookup == nil) and app_icons["Default"] or lookup)
+
+		workspace_icons = workspace_icons .. " " .. icon
 	end
 
 	return has_app, workspace_icons

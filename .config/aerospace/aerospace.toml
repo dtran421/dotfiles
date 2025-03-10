@@ -287,11 +287,11 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
   if.app-id = 'org.mozilla.firefox'
-  run       = 'move-node-to-workspace 2'
+  run       = 'move-node-to-workspace S'
 
 [[on-window-detected]]
   if.app-id = 'com.amazon.Amazon-Chime'
-  run       = 'move-node-to-workspace 2'
+  run       = 'move-node-to-workspace S'
 
 [[on-window-detected]]
   if.app-id = 'com.spotify.client'
