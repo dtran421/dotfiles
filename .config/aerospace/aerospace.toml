@@ -7,7 +7,7 @@ after-login-command = []
 # 'after-startup-command' is run after 'after-login-command'
 # Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-  'exec-and-forget borders hidpi=on active_color="glow(0xffcba5f7)" inactive_color=0xff8e73ad width=14.0',
+  'exec-and-forget borders hidpi=on active_color="glow(0xffcba5f7)" inactive_color=0xff44475A width=14.0',
   'exec-and-forget sketchybar',
 ]
 
@@ -65,12 +65,12 @@ automatically-unhide-macos-hidden-apps = true
 #                 See:
 #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
-  inner.horizontal = 12
-  inner.vertical   = 12
-  outer.left       = 24
-  outer.bottom     = 24
-  outer.top        = 72
-  outer.right      = 24
+  inner.horizontal = 28
+  inner.vertical   = 28
+  outer.left       = 36
+  outer.bottom     = 36
+  outer.top        = [{ monitor.built-in = 48 }, 84]
+  outer.right      = 36
 
 [workspace-to-monitor-force-assignment]
   1 = 'main'

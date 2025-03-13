@@ -106,16 +106,11 @@ volume_percent:subscribe("volume_change", function(env)
 		icon = icons.volume._10
 	end
 
-	local lead = ""
-	if volume < 10 then
-		lead = "0"
-	end
-
 	volume_icon:set({
 		---@type string
 		label = icon,
 	})
-	volume_percent:set({ label = lead .. volume .. "%" })
+	volume_percent:set({ label = volume .. "%" })
 	volume_slider:set({ slider = { percentage = volume } })
 end)
 
