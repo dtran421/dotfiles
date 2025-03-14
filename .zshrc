@@ -216,6 +216,10 @@ alias lg=lazygit
 
 eval $(thefuck --alias)
 
+# ---- spicetify ---- #
+
+export PATH=$PATH:~/.spicetify
+
 # ---- END OF CONFIG ---- #
 
 neofetch

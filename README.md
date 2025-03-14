@@ -43,6 +43,9 @@ Hey there 👋! These are my macOS/Linux config dotfiles
     -o $HOME/Library/Fonts/sketchybar-app-font.ttf
   ```
 
+- [spicetify](https://spicetify.app/docs/advanced-usage/installation)
+  - [catppuccin](https://github.com/catppuccin/spicetify?tab=readme-ov-file#usage)
+
 ## Installation
 
 ### Prerequisities
