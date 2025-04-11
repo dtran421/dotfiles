@@ -165,7 +165,6 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-cmd-g = 'workspace G'
   ctrl-cmd-i = 'workspace I'
   ctrl-cmd-o = 'workspace O'
-  ctrl-cmd-p = 'workspace P'
   ctrl-cmd-q = 'workspace Q'
   ctrl-cmd-r = 'workspace R'
   ctrl-cmd-u = 'workspace U'
