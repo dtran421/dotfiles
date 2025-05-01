@@ -17,6 +17,8 @@
 	excludesFile = ~/.gitignore_global
 	editor = nvim
 	pager = delta
+  compression = 9
+  whitespace = error
 [init]
 	defaultBranch = main
 [delta]
@@ -24,6 +26,15 @@
   side-by-side = true
 [interactive]
 	diffFilter = delta --color-only
+[push]
+  autoSetupRemote = true
+  default = upstream
+  followTags = true
+[pull]
+  rebase = true
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
 [merge]
 	conflictStyle = zdiff3
 [oh-my-zsh]
