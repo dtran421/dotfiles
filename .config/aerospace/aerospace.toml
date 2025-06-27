@@ -161,7 +161,6 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-cmd-8 = 'workspace 8'
   ctrl-cmd-9 = 'workspace 9'
   ctrl-cmd-a = 'workspace A'
-  ctrl-cmd-d = 'workspace D'
   ctrl-cmd-g = 'workspace G'
   ctrl-cmd-i = 'workspace I'
   ctrl-cmd-o = 'workspace O'
@@ -173,6 +172,9 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-cmd-x = 'workspace X'
   ctrl-cmd-y = 'workspace Y'
   ctrl-cmd-z = 'workspace Z'
+
+  # Disabled
+  # ctrl-cmd-d = 'workspace D' // system-wide Mac shortcut to open Dictionary
 
   # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
   ctrl-alt-1 = 'move-node-to-workspace 1'
@@ -187,7 +189,6 @@ automatically-unhide-macos-hidden-apps = true
   ctrl-alt-a = 'move-node-to-workspace A'
   ctrl-alt-b = 'move-node-to-workspace B'
   ctrl-alt-c = 'move-node-to-workspace C'
-  ctrl-alt-d = 'move-node-to-workspace D'
   ctrl-alt-e = 'move-node-to-workspace E'
   ctrl-alt-g = 'move-node-to-workspace G'
   ctrl-alt-i = 'move-node-to-workspace I'
@@ -309,9 +310,17 @@ automatically-unhide-macos-hidden-apps = true
   run       = 'move-node-to-workspace E'
 
 [[on-window-detected]]
+  if.app-id = 'com.microsoft.Word'
+  run       = 'move-node-to-workspace W'
+
+[[on-window-detected]]
   if.app-id = 'com.tinyspeck.slackmacgap'
   run       = 'move-node-to-workspace E'
 
 [[on-window-detected]]
   if.app-id = 'com.microsoft.VSCode'
+  run       = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+  if.app-id = 'com.jetbrains.intellij'
   run       = 'move-node-to-workspace C'

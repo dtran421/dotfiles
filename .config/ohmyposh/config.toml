@@ -1,20 +1,20 @@
 console_title_template = '🚀 {{ .Folder }}'
-version = 3
-final_space = true
+version                = 3
+final_space            = true
 
 [palette]
-  os = '#CDD6F3'
-  pink = '#F5C2E7'
+  os       = '#CDD6F3'
+  pink     = '#F5C2E7'
   lavender = '#CBA6F7'
-  blue = '#8AADF4'
-  wight = '#FFFFFF'
-  text = '#454759'
+  blue     = '#8AADF4'
+  wight    = '#FFFFFF'
+  text     = '#454759'
 
-  red = '#F38BA8'
+  red   = '#F38BA8'
   green = '#A7E3A1'
 
 [secondary_prompt]
-  template = '❯❯ '
+  template   = '❯❯ '
   foreground = 'p:wight'
   background = 'transparent'
 
@@ -26,167 +26,167 @@ final_space = true
   template = '❯ '
 
 [[blocks]]
-  type = 'prompt'
+  type      = 'prompt'
   alignment = 'left'
-  newline = true
+  newline   = true
 
   [[blocks.segments]]
-    type = 'session'
-    style = 'diamond'
+    type             = 'session'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '{{ if .SSHSession }}   {{ end }}'
-    foreground = 'p:text'
-    background = 'p:pink'
+    leading_diamond  = ''
+    template         = '{{ if .SSHSession }}   {{ end }}'
+    foreground       = 'p:text'
+    background       = 'p:pink'
 
   [[blocks.segments]]
-    type = 'os'
-    style = 'diamond'
-    leading_diamond = ''
+    type             = 'os'
+    style            = 'diamond'
+    leading_diamond  = ''
     powerline_symbol = ''
-    template = ' {{ .Icon }} '
-    foreground = 'p:text'
-    background = 'p:os'
+    template         = ' {{ .Icon }} '
+    foreground       = 'p:text'
+    background       = 'p:os'
 
   [[blocks.segments]]
-    type = 'session'
-    style = 'diamond'
+    type             = 'session'
+    style            = 'diamond'
     powerline_symbol = ''
-    template = '{{ .UserName }}{{ if .SSHSession }}@{{ end }} '
-    foreground = 'p:text'
-    background = 'p:os'
+    template         = '{{ .UserName }}{{ if .SSHSession }}@{{ end }} '
+    foreground       = 'p:text'
+    background       = 'p:os'
 
   [[blocks.segments]]
-    type = 'path'
-    style = 'powerline'
+    type             = 'path'
+    style            = 'powerline'
     powerline_symbol = ''
-    template = '  {{ path .Path .Location }} '
-    foreground = 'p:text'
-    background = 'p:blue'
+    template         = '  {{ path .Path .Location }} '
+    foreground       = 'p:text'
+    background       = 'p:blue'
 
     [blocks.segments.properties]
       folder_icon = '..'
-      home_icon = '~'
-      style = 'agnoster_short'
+      home_icon   = '~'
+      style       = 'agnoster_short'
 
 [[blocks]]
-  type = 'prompt'
+  type      = 'prompt'
   alignment = 'right'
-  overflow = 'hidden'
-  filler = '{{ if .Overflow }} {{ else }}<p:os><d>∙</d></>{{ end }}'
+  overflow  = 'hidden'
+  filler    = '{{ if .Overflow }} {{ else }}<p:os><d>∙</d></>{{ end }}'
 
   [[blocks.segments]]
-    type = 'status'
-    style = 'diamond'
-    leading_diamond = ''
-    template = ' {{ if gt .Code 0 }}{{ else }}{{ end }} {{ if .Segments.Executiontime }}{{ else }} {{ end }}'
-    foreground = 'p:text'
-    background = 'p:lavender'
+    type                 = 'status'
+    style                = 'diamond'
+    leading_diamond      = ''
+    template             = ' {{ if gt .Code 0 }}{{ else }}{{ end }} {{ if .Segments.Executiontime }}{{ else }} {{ end }}'
+    foreground           = 'p:text'
+    background           = 'p:lavender'
     background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
 
     [blocks.segments.properties]
       always_enabled = true
 
   [[blocks.segments]]
-    type = 'executiontime'
-    style = 'diamond'
-    powerline_symbol = ''
-    template = '{{ .FormattedMs }}  '
-    foreground = 'p:text'
-    background = 'p:lavender'
+    type                 = 'executiontime'
+    style                = 'diamond'
+    powerline_symbol     = ''
+    template             = '{{ .FormattedMs }}  '
+    foreground           = 'p:text'
+    background           = 'p:lavender'
     background_templates = ['{{ if gt .Code 0 }}p:red{{ end }}']
 
   [[blocks.segments]]
-    type = 'java'
-    style = 'diamond'
+    type             = 'java'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '  {{ .Major }}.{{ .Minor }} '
-    foreground = 'p:wight'
-    background = 'p:text'
+    leading_diamond  = ''
+    template         = '  {{ .Major }}.{{ .Minor }} '
+    foreground       = 'p:wight'
+    background       = 'p:text'
 
     [blocks.segments.properties]
       display_mode = 'files'
       home_enabled = false
 
   [[blocks.segments]]
-    type = 'lua'
-    style = 'diamond'
+    type             = 'lua'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '  {{ .Full }} '
-    foreground = 'p:wight'
-    background = 'p:text'
+    leading_diamond  = ''
+    template         = '  {{ .Full }} '
+    foreground       = 'p:wight'
+    background       = 'p:text'
 
     [blocks.segments.properties]
       display_mode = 'files'
       home_enabled = false
 
   [[blocks.segments]]
-    type = 'node'
-    style = 'diamond'
+    type             = 'node'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '{{ if .Segments.Ruby }}{{ else }}  {{ .Major }}.{{ .Minor }} {{ end }}'
-    foreground = 'p:wight'
-    background = 'p:text'
+    leading_diamond  = ''
+    template         = '{{ if .Segments.Ruby }}{{ else }}  {{ .Major }}.{{ .Minor }} {{ end }}'
+    foreground       = 'p:wight'
+    background       = 'p:text'
 
     [blocks.segments.properties]
       display_mode = 'files'
       home_enabled = false
 
   [[blocks.segments]]
-    type = 'python'
-    style = 'diamond'
+    type             = 'python'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '  {{ .Full }} '
-    foreground = 'p:wight'
-    background = 'p:text'
+    leading_diamond  = ''
+    template         = '  {{ .Full }} '
+    foreground       = 'p:wight'
+    background       = 'p:text'
 
     [blocks.segments.properties]
       display_mode = 'files'
       home_enabled = false
 
   [[blocks.segments]]
-    type = 'ruby'
-    style = 'diamond'
+    type             = 'ruby'
+    style            = 'diamond'
     powerline_symbol = ''
-    leading_diamond = ''
-    template = '  {{ .Full }} '
-    foreground = 'p:wight'
-    background = 'p:text'
+    leading_diamond  = ''
+    template         = '  {{ .Full }} '
+    foreground       = 'p:wight'
+    background       = 'p:text'
 
     [blocks.segments.properties]
       display_mode = 'files'
       home_enabled = false
 
   [[blocks.segments]]
-    type = 'time'
-    style = 'diamond'
-    leading_diamond = ''
+    type             = 'time'
+    style            = 'diamond'
+    leading_diamond  = ''
     trailing_diamond = ''
-    template = ' {{ .CurrentDate | date "03:04 PM" }}  '
-    foreground = 'p:text'
-    background = 'p:os'
+    template         = ' {{ .CurrentDate | date "03:04 PM" }}  '
+    foreground       = 'p:text'
+    background       = 'p:os'
 
 [[tooltips]]
-  type = 'aws'
-  style = 'diamond'
-  tips = ['aws']
-  leading_diamond = ''
+  type             = 'aws'
+  style            = 'diamond'
+  tips             = ['aws']
+  leading_diamond  = ''
   trailing_diamond = ''
-  template = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
-  foreground = 'p:white'
-  background = 'p:orange'
+  template         = '  {{ .Profile }}{{ if .Region }}@{{ .Region }}{{ end }} '
+  foreground       = 'p:text'
+  background       = 'p:os'
 
   [tooltips.properties]
     display_default = true
 
 [[blocks]]
-  type = 'prompt'
+  type      = 'prompt'
   alignment = 'left'
-  newline = true
+  newline   = true
 
   [[blocks.segments]]
     type = 'text'
@@ -199,6 +199,6 @@ final_space = true
     template = '❯'
 
 [upgrade]
-  source = 'cdn'
+  source   = 'cdn'
   interval = '168h'
-  notice = true
+  notice   = true
