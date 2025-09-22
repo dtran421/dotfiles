@@ -75,7 +75,7 @@ automatically-unhide-macos-hidden-apps = true
 [workspace-to-monitor-force-assignment]
   1 = 'main'
   B = 'main'
-  T = 'main'
+  T = ['VG27AQ1A', 'main']
   C = 'main'
 
   2 = ['secondary', 'G237HL', 'P27h-28 (1)']
@@ -83,7 +83,7 @@ automatically-unhide-macos-hidden-apps = true
   E = ['secondary', 'G237HL', 'P27h-28 (1)']
 
   3 = 'built-in'
-  M = 'built-in'
+  M = 'ROG XG27AQ'
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
