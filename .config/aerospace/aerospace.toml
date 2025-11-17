@@ -73,17 +73,16 @@ automatically-unhide-macos-hidden-apps = true
   outer.right      = 36
 
 [workspace-to-monitor-force-assignment]
-  1 = 'main'
-  B = 'main'
+  1 = ['main', 'ROG XG27AQ']
+  B = ['main', 'ROG XG27AQ']
   T = ['VG27AQ1A', 'main']
-  C = 'main'
+  C = ['main', 'ROG XG27AQ']
 
-  2 = ['secondary', 'G237HL', 'P27h-28 (1)']
-  S = ['secondary', 'G237HL', 'P27h-28 (1)']
-  E = ['secondary', 'G237HL', 'P27h-28 (1)']
+  2 = ['secondary', 'VG27AQ1A']
+  S = ['LEN P32p-20', 'ROG XG27AQ', 'secondary']
 
-  3 = 'built-in'
-  M = 'ROG XG27AQ'
+  3 = 'Built-in'
+  M = ['ROG XG27AQ', 'Built-in']
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
