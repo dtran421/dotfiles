@@ -1,7 +1,7 @@
 return {
   -- MASON
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = function(_, opts)
       vim.list_extend(opts.ensure_installed, {
         "luacheck",
@@ -60,7 +60,7 @@ return {
                 includeInlayEnumMemberValueHints = true,
               },
             },
-          },
+          }
         },
 
         html = {},
@@ -152,11 +152,15 @@ return {
   -- LSP keymaps
   {
     "neovim/nvim-lspconfig",
-    opts = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- disable Rename for IncRename
-      keys[#keys + 1] = { "<leader>cr", false }
-    end,
+    opts = {
+      servers = {
+        ['*'] = {
+          keys = {
+            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition"},
+          },
+        },
+      },
+    },
   },
 
   {

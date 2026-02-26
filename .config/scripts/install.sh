@@ -4,9 +4,26 @@ OS_NAME=$(uname -s)
 
 echo "Installing dotfiles"
 
-./install-ghostty.sh
+if [[ "$OS_NAME" == "Darwin" ]]; then
+  ./install-ghostty.sh
+else
+  echo "Ghostty is not supported on $OS_NAME"
+fi
 
-echo "Misc setup"
+if [[ ! -f $HOME/.init.zsh ]]; then
+  echo "Creating init.zsh"
+  touch $HOME/.init.zsh
+else
+  echo "init.zsh already exists, re-using"
+fi
+
+echo "Initializing oh-my-zsh"
+
+git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-tab
+
+echo "Starting misc setup..."
+
+wget https://raw.githubusercontent.com/junegunn/fzf-git.sh/main/fzf-git.sh -O ~/.config/scripts/fzf-git.sh
 
 if [[ "$OS_NAME" == "Darwin" ]]; then
   echo "Installing fonts"

@@ -68,7 +68,7 @@ plugins=(alias-finder extract fzf-tab git git-commit tmux yarn zsh-autosuggestio
 
 fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
 source $ZSH/oh-my-zsh.sh
-source /usr/local/bin/lscolors.sh
+source ~/.config/scripts/lscolors.sh
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 # set list-colors to enable filename colorizing
@@ -134,16 +134,16 @@ unset __conda_setup
 set -o ignoreeof
 
 # ---- eza (better ls) ---- #
- 
+
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
 # ---- zoxide (better cd) ---- #
 
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 alias cd="z"
 
 # ---- fzf ---- #
- 
+
 eval "$(fzf --zsh)"
 
 # use fd instead of fzf
@@ -164,7 +164,7 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/fzf-git.sh/fzf-git.sh
+source ~/.config/scripts/fzf-git.sh
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --color=always {} | head -200; else bat -n --color=always --line-range :500 {}; fi"
 
@@ -224,3 +224,7 @@ export PATH=$PATH:~/.spicetify
 
 neofetch
 source ~/.init.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
