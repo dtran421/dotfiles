@@ -68,12 +68,12 @@ brew install git
 brew install stow
 ```
 
-### MacOS
+### Instructions
 
 First, checkout this dotfiles repo in your $HOME directory using git
 
 ```sh
-git clone git@github.com/dtran421/dotfiles.git
+git clone git@github.com:dtran421/dotfiles.git
 ```
 
 Use GNU Stow to create symlinks to $HOME directory
@@ -83,35 +83,26 @@ cd dotfiles
 stow .
 ```
 
-Run this command to install dependencies
+Then, run the following installation script:
+
+```sh
+bash ~/dotfiles/.config/scripts/install.sh
+```
+
+## Package Installation
+
+### MacOS
+
+Try to use `brew` for MacOS, otherwise look for download links.
+
+Run this command to install dependencies:
 
 ```sh
 brew bundle install
 ```
 
-## Package Installation
+### Linux x86_64
 
-Try to use `brew` for MacOS, otherwise look for download links.
-
-### Linux
-
-1. For x86_64 Linux, download the `musl` or `amd64` binary file
+1. Download the `musl` or `amd64` binary file
 2. Move the file to the `/usr/local/bin/` directory
 3. Reload `zsh` via `rld-zsh`
-
-## Committing Changes
-
-First, ensure you're in the dotfiles folder `$HOME/dotfiles`. Make changes to a dotfile.
-Then, run the following commands:
-
-```sh
-git add <dotfile name>
-```
-
-```sh
-git commit -m <commit message>
-```
-
-```sh
-git push
-```

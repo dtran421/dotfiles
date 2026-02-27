@@ -3,6 +3,7 @@
 **/__pycache__
 *.log
 
+.config/scripts/fzf-git.sh
 .config/bat/themes
 .config/karabiner/automatic_backups
 .config/neonctl
