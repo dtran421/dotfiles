@@ -20,7 +20,7 @@ background-opacity = 0.75
 background-blur-radius = 20
 
 cursor-style = block
-shell-integration-features = no-cursor
+shell-integration-features = ssh-terminfo,ssh-env,no-cursor
 
 macos-icon = custom-style
 macos-icon-ghost-color = 9e0059

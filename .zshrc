@@ -5,6 +5,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export GO111MODULE=on
 export PATH=$PATH:~/go/bin
 
+# Path for Yarn
+export PATH="$PATH:$(yarn global bin)"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 

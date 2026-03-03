@@ -79,7 +79,8 @@ automatically-unhide-macos-hidden-apps = true
   C = ['main', 'ROG XG27AQ']
 
   2 = ['secondary', 'VG27AQ1A']
-  S = ['LEN P32p-20', 'ROG XG27AQ', 'secondary']
+  S = ['ROG XG27AQ', 'secondary']
+  E = ['ROG XG27AQ', 'secondary']
 
   3 = 'Built-in'
   M = ['ROG XG27AQ', 'Built-in']
