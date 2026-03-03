@@ -112,7 +112,14 @@ alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
 
-alias rld-zsh="source ~/.zshrc"
+alias rld-zsh="exec zsh"
+
+# suffix aliases
+alias -s md="bat"
+alias -s json="jless"
+alias -s html="open"
+alias -s yaml="bat -l yaml"
+alias -s yml="bat -l yaml"
 
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
@@ -135,6 +142,30 @@ unset __conda_setup
 
 # Prevent shell from closing on Ctrl + d
 set -o ignoreeof
+
+# ---- zsh shortcuts ---- #
+
+# Open buffer line in editor
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
+# delete word
+# ^w
+
+# delete line
+# ^u
+
+# undo
+# ^-
+
+# Copy current command to clipboard
+copy-command() {
+  echo -n $BUFFER | pbcopy # or xclip
+  zle -M "Copied to clipboard"
+}
+zle -N copy-command
+bindkey '^Xc' copy-command
 
 # ---- eza (better ls) ---- #
 
