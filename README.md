@@ -91,18 +91,8 @@ bash ~/dotfiles/.config/scripts/install.sh
 
 ## Package Installation
 
-### MacOS
-
-Try to use `brew` for MacOS, otherwise look for download links.
-
 Run this command to install dependencies:
 
 ```sh
 brew bundle install
 ```
-
-### Linux x86_64
-
-1. Download the `musl` or `amd64` binary file
-2. Move the file to the `/usr/local/bin/` directory
-3. Reload `zsh` via `rld-zsh`

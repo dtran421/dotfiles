@@ -1,12 +1,22 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export PATH=$PATH:$HOME/.local/bin
+
+# Path for Linuxbrew
+if [ -d "/home/linuxbrew/.linuxbrew/bin" ]; then
+  export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv zsh)"
+fi
+
 # Path for Go
 export GO111MODULE=on
 export PATH=$PATH:~/go/bin
 
 # Path for Yarn
-export PATH="$PATH:$(yarn global bin)"
+if [ -x "$(command -v yarn)" ]; then
+  export PATH="$PATH:$(yarn global bin)"
+fi
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -111,6 +121,7 @@ alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
+alias conf-install="nvim ~/.config/scripts/install.sh"
 
 alias rld-zsh="exec zsh"
 
@@ -173,7 +184,7 @@ alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time
 
 # ---- zoxide (better cd) ---- #
 
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init zsh)"
 alias cd="z"
 
 # ---- fzf ---- #
