@@ -79,8 +79,8 @@ automatically-unhide-macos-hidden-apps = true
   C = ['main', 'ROG XG27AQ']
 
   2 = ['secondary', 'VG27AQ1A']
-  S = ['ROG XG27AQ', 'secondary']
-  E = ['ROG XG27AQ', 'secondary']
+  S = ['LEN P32p-20', 'ROG XG27AQ', 'secondary']
+  E = ['ROG XG27AQ', 'P27h-28 (2)', 'secondary']
 
   3 = 'Built-in'
   M = ['ROG XG27AQ', 'Built-in']
@@ -294,6 +294,10 @@ automatically-unhide-macos-hidden-apps = true
   run       = 'move-node-to-workspace S'
 
 [[on-window-detected]]
+  if.app-id = 'us.zoom.xos'
+  run       = 'move-node-to-workspace S'
+
+[[on-window-detected]]
   if.app-id = 'com.spotify.client'
   run       = 'move-node-to-workspace M'
 
@@ -323,4 +327,8 @@ automatically-unhide-macos-hidden-apps = true
 
 [[on-window-detected]]
   if.app-id = 'com.jetbrains.intellij'
+  run       = 'move-node-to-workspace C'
+
+[[on-window-detected]]
+  if.app-id = 'com.jetbrains.cwm.guest'
   run       = 'move-node-to-workspace C'
