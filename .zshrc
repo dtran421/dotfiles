@@ -124,6 +124,7 @@ alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
 alias conf-install="nvim ~/.config/scripts/install.sh"
 
 alias rld-zsh="exec zsh"
+alias rld-bat="bat cache --build"
 
 # suffix aliases
 alias -s md="bat"
@@ -170,9 +171,10 @@ bindkey '^x^e' edit-command-line
 # undo
 # ^-
 
-# Copy current command to clipboard
+# Copy current command to clipboard (OSC 52 - works over SSH)
 copy-command() {
-  echo -n $BUFFER | pbcopy # or xclip
+  local encoded=$(echo -n "$BUFFER" | base64 | tr -d '\n')
+  printf "\e]52;c;%s\a" "$encoded"
   zle -M "Copied to clipboard"
 }
 zle -N copy-command
@@ -237,10 +239,6 @@ _fzf_comprun() {
 preview_bat() {
   bat --list-themes | fzf --preview="bat --theme={} --color=always $1"
 }
-
-alias reload-bat="bat cache --build"
-
-export BAT_THEME=tokyonight_night
 
 # ---- yazi ---- #
 
