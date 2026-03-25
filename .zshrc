@@ -240,6 +240,17 @@ preview_bat() {
   bat --list-themes | fzf --preview="bat --theme={} --color=always $1"
 }
 
+# ---- fastfetch ---- #
+#
+# Command to preview fastfetch preset examples
+preview_fastfetch() {
+  fastfetch --list-presets \
+    | awk '/^examples\/$/{prefix="examples/"; next} /^\s*\|/{print prefix $NF; next} /^[^ |]/{prefix=""; print $1}' \
+    | fzf --ansi \
+          --preview="fastfetch --config {} " \
+          --preview-window=right:60%
+}
+
 # ---- yazi ---- #
 
 export EDITOR=nvim
@@ -265,7 +276,7 @@ export PATH=$PATH:~/.spicetify
 
 # ---- END OF CONFIG ---- #
 
-neofetch
+fastfetch --config ~/.config/fastfetch/config.jsonc
 source ~/.init.zsh
 
 export NVM_DIR="$HOME/.nvm"

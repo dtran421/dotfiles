@@ -19,6 +19,12 @@ return {
     opts = {
       inlay_hints = { enabled = true },
       servers = {
+        ["*"] = {
+          keys = {
+            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition" },
+          },
+        },
+
         cssls = {},
 
         tailwindcss = {
@@ -32,6 +38,7 @@ return {
             return require("lspconfig.util").root_pattern(".git")(...)
           end,
         },
+
         tsserver = {
           root_dir = function(...)
             return require("lspconfig.util").root_pattern(".git")(...)
@@ -64,6 +71,16 @@ return {
         },
 
         html = {},
+
+        jsonls = {
+          settings = {
+            json = {
+              schemas = {
+                { fileMatch = { "*.jsonc" }, schema = { allowTrailingCommas = true } },
+              },
+            },
+          },
+        },
 
         lua_ls = {
           single_file_support = true,
@@ -144,20 +161,6 @@ return {
           -- Add additional filetypes
           vim.list_extend(opts.filetypes, opts.filetypes_include or {})
         end,
-      },
-    },
-  },
-
-  -- LSP keymaps
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        ["*"] = {
-          keys = {
-            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition" },
-          },
-        },
       },
     },
   },
