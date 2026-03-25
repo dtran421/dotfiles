@@ -60,7 +60,7 @@ return {
                 includeInlayEnumMemberValueHints = true,
               },
             },
-          }
+          },
         },
 
         html = {},
@@ -130,11 +130,10 @@ return {
 
       setup = {
         tailwindcss = function(_, opts)
-          local tw = LazyVim.lsp.get_raw_config("tailwindcss")
           opts.filetypes = opts.filetypes or {}
 
           -- Add default filetypes
-          vim.list_extend(opts.filetypes, tw.default_config.filetypes)
+          vim.list_extend(opts.filetypes, vim.lsp.config.tailwindcss.filetypes)
 
           -- Remove excluded filetypes
           --- @param ft string
@@ -154,9 +153,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
-        ['*'] = {
+        ["*"] = {
           keys = {
-            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition"},
+            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition" },
           },
         },
       },
