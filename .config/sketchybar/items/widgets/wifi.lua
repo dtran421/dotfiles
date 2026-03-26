@@ -1,5 +1,8 @@
+---@type Icons
 local icons = require("icons")
+---@type Colors
 local colors = require("colors")
+---@type Settings
 local settings = require("settings")
 
 -- Execute the event provider binary which provides the event "network_update"
@@ -175,9 +178,9 @@ sbar.add("item", { position = "right", width = settings.group_paddings })
 -- 	})
 -- end)
 
-wifi:subscribe({ "wifi_change", "system_woke" }, function(env)
-	sbar.exec("ipconfig getifaddr en0", function(ip)
-		local connected = not (ip == "")
+wifi:subscribe({ "wifi_change", "system_woke" }, function(_)
+	sbar.exec("ipconfig getifaddr en0", function(addr)
+		local connected = not (addr == "")
 		wifi:set({
 			icon = {
 				string = connected and icons.wifi.connected or icons.wifi.disconnected,
@@ -221,6 +224,7 @@ wifi:subscribe("mouse.clicked", toggle_details)
 wifi:subscribe("mouse.exited.global", hide_details)
 
 local function copy_label_to_clipboard(env)
+	---@type string
 	local label = sbar.query(env.NAME).label.value
 	sbar.exec('echo "' .. label .. '" | pbcopy')
 	sbar.set(env.NAME, { label = { string = "Copied!", align = "center" } })

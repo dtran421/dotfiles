@@ -1,3 +1,10 @@
+---@class Settings
+---@field paddings number
+---@field group_paddings number
+---@field icons string
+---@field font { text: string, numbers: string, style_map: table<string, string> }
+
+---@type Settings
 return {
 	paddings = 3,
 	group_paddings = 5,

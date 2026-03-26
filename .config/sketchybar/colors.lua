@@ -1,3 +1,21 @@
+---@class Colors
+---@field black number
+---@field white number
+---@field red number
+---@field green number
+---@field blue number
+---@field yellow number
+---@field orange number
+---@field magenta number
+---@field grey number
+---@field transparent number
+---@field bar { bg: number, border: number }
+---@field popup { bg: number, border: number }
+---@field bg1 number
+---@field bg2 number
+---@field with_alpha fun(color: number, alpha: number): number
+
+---@type Colors
 return {
 	black = 0xff181819,
 	white = 0xffe2e2e3,

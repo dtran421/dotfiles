@@ -1,3 +1,4 @@
+---@type Colors
 local colors = require("colors")
 
 -- Equivalent to the --bar domain

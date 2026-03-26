@@ -1,4 +1,5 @@
 -- Require the sketchybar module
+---@type Sbar
 sbar = require("sketchybar")
 
 -- Set the bar name, if you are using another bar instance than sketchybar

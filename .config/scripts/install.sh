@@ -35,6 +35,7 @@ fi
 
 pretty_print "Installing Nodejs and npm"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+nvm install node
 
 if [[ "$OS_NAME" == "Darwin" ]]; then
 	pretty_print "Installing Ghostty"

@@ -1,4 +1,6 @@
+---@type Settings
 local settings = require("settings")
+---@type Colors
 local colors = require("colors")
 
 -- Padding item required because of bracket

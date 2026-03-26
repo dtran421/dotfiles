@@ -1,4 +1,6 @@
+---@type Colors
 local colors = require("colors")
+---@type Settings
 local settings = require("settings")
 
 local menu_watcher = sbar.add("item", {
@@ -12,6 +14,7 @@ local space_menu_swap = sbar.add("item", {
 sbar.add("event", "swap_menus_and_spaces")
 
 local max_items = 15
+---@type table<number, SbarItem>
 local menu_items = {}
 for i = 1, max_items, 1 do
 	local menu = sbar.add("item", "menu." .. i, {
@@ -46,7 +49,6 @@ local function update_menus(_)
 		sbar.set("/menu\\..*/", { drawing = false })
 		menu_padding:set({ drawing = true })
 
-		---@type number
 		local id = 1
 		for menu in string.gmatch(menus, "[^\r\n]+") do
 			if id < max_items then

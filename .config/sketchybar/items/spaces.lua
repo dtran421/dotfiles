@@ -1,5 +1,8 @@
+---@type Colors
 local colors = require("colors")
+---@type Icons
 local icons = require("icons")
+---@type Settings
 local settings = require("settings")
 
 ---@type table<string, string>
@@ -10,22 +13,14 @@ local NEWLINE_REGEX = "[^\r\n]+"
 local AEROSPACE_WINDOW_REGEX = "|%s*.*%s*|"
 local WINDOW_NAME_REGEX = "^%s*(.-)%s*|%s*.*%s*$"
 
+---@type table<string, SbarItem>
 local spaces = {}
+---@type SbarItem?
 Mode_indicator = nil
 
-local trim = function(s)
-	local l = 1
-	while string.sub(s, l, l) == " " do
-		l = l + 1
-	end
-
-	local r = #s
-	while string.sub(s, r, r) == " " do
-		r = r - 1
-	end
-	return string.sub(s, l, r)
-end
-
+---@param windows string
+---@return boolean has_app
+---@return string workspace_icons
 local get_space_icons = function(windows)
 	local has_app = false
 	local workspace_icons = ""
@@ -35,10 +30,9 @@ local get_space_icons = function(windows)
 
 		local app_match = string.match(window, AEROSPACE_WINDOW_REGEX)
 		local app = string.gsub(string.sub(app_match, 2, #app_match - 1), WINDOW_NAME_REGEX, "%1")
-
-		local trimmed_app = trim(app)
+		local trimmed_app = string.match(app, "^%s*(.-)%s*$")
 		local lookup = app_icons[trimmed_app]
-		local icon = ((lookup == nil) and app_icons["Default"] or lookup)
+		local icon = lookup or app_icons["Default"]
 
 		workspace_icons = workspace_icons .. " " .. icon
 	end
@@ -46,6 +40,8 @@ local get_space_icons = function(windows)
 	return has_app, workspace_icons
 end
 
+---@param workspace string
+---@param workspace_icons string
 local create_space = function(workspace, workspace_icons)
 	if spaces[workspace] ~= nil then
 		sbar.remove("space." .. workspace)
@@ -105,6 +101,7 @@ local create_space = function(workspace, workspace_icons)
 	spaces[workspace] = space
 end
 
+---@param workspaces string
 local create_spaces = function(workspaces)
 	for workspace in string.gmatch(workspaces, EMPTY_SPACE_REGEX) do
 		sbar.exec("aerospace list-windows --workspace " .. workspace, function(windows)
@@ -119,20 +116,20 @@ local create_spaces = function(workspaces)
 	end
 end
 
+---@type SbarItem
 local space_window_observer = sbar.add("item", {
 	drawing = false,
 	updates = true,
 })
 
+---@type SbarItem
 local spaces_indicator = sbar.add("item", {
 	---@type number
 	padding_right = settings.group_paddings,
 	icon = {
 		padding_left = 8,
 		padding_right = 8,
-		---@type number
 		color = colors.grey,
-		---@type number
 		string = icons.switch.on,
 	},
 	label = {
@@ -140,7 +137,6 @@ local spaces_indicator = sbar.add("item", {
 		padding_left = 0,
 		padding_right = 8,
 		string = "Spaces",
-		---@type number
 		color = colors.grey,
 	},
 	background = {
@@ -151,36 +147,37 @@ local spaces_indicator = sbar.add("item", {
 	},
 })
 
+---@param env table
 local update_previous_workspace_handler = function(env)
-	if env.PREVIOUS_WORKSPACE == nil or not spaces[env.PREVIOUS_WORKSPACE] then
+	---@type string?
+	local prev = env.PREVIOUS_WORKSPACE
+	if prev == nil or not spaces[prev] then
 		return
 	end
 
-	sbar.exec("aerospace list-windows --workspace " .. env.PREVIOUS_WORKSPACE, function(windows)
-		local has_app, _ = get_space_icons(windows)
+	sbar.exec("aerospace list-windows --workspace " .. prev, function(windows)
+		local has_app, workspace_icons = get_space_icons(windows)
 
 		if not has_app then
-			spaces[env.PREVIOUS_WORKSPACE]:set({
-				drawing = false,
-			})
+			sbar.remove("space." .. prev)
+			sbar.remove("space.padding." .. prev)
+			spaces[prev] = nil
 			return
 		end
 
 		sbar.animate("tanh", 5, function()
-			spaces[env.PREVIOUS_WORKSPACE]:set({
+			spaces[prev]:set({
 				icon = {
 					font = {
-						---@type string
 						style = settings.font.style_map["Regular"],
 					},
 					highlight = false,
-					---@type number
 					color = colors.white,
-					---@type string
-					string = env.PREVIOUS_WORKSPACE,
+					string = prev,
 				},
 				label = {
 					highlight = false,
+					string = workspace_icons,
 				},
 				background = {
 					---@type number
@@ -192,33 +189,34 @@ local update_previous_workspace_handler = function(env)
 	end)
 end
 
+---@param env table
 local update_focused_workspace_handler = function(env)
-	sbar.exec("aerospace list-windows --workspace " .. env.FOCUSED_WORKSPACE, function(windows)
+	---@type string
+	local focused = env.FOCUSED_WORKSPACE
+
+	sbar.exec("aerospace list-windows --workspace " .. focused, function(windows)
 		local _, workspace_icons = get_space_icons(windows)
 
-		if spaces[env.FOCUSED_WORKSPACE] == nil then
-			create_space(env.FOCUSED_WORKSPACE, workspace_icons)
+		if spaces[focused] == nil then
+			create_space(focused, workspace_icons)
 		end
 
 		sbar.animate("tanh", 5, function()
-			spaces[env.FOCUSED_WORKSPACE]:set({
+			spaces[focused]:set({
 				drawing = true,
 				icon = {
 					highlight = true,
 					font = {
-						---@type string
 						style = settings.font.style_map["Black"],
 					},
-					---@type number
 					color = colors.magenta,
-					string = "(" .. env.FOCUSED_WORKSPACE .. ")",
+					string = "(" .. focused .. ")",
 				},
 				label = {
 					highlight = true,
 					string = workspace_icons,
 				},
 				background = {
-					---@type number
 					border_color = colors.magenta,
 					border_width = 2,
 				},
@@ -232,22 +230,23 @@ space_window_observer:subscribe("aerospace_workspace_change", function(env)
 	update_focused_workspace_handler(env)
 end)
 
+---@param env table
 local update_mode_handler = function(env)
 	if Mode_indicator == nil then
 		return
 	end
 
+	local is_main = env.MODE == "main"
 	Mode_indicator:set({
 		icon = {
-			---@type string
-			string = env.MODE == "main" and icons.aerospace.main or icons.aerospace.service,
+			string = is_main and (icons.aerospace and icons.aerospace.main or "")
+				or (icons.aerospace and icons.aerospace.service or ""),
 		},
 		label = {
 			string = string.upper(env.MODE),
 		},
 		background = {
-			---@type number
-			color = env.MODE == "main" and colors.blue or colors.green,
+			color = is_main and colors.blue or colors.green,
 		},
 	})
 end
@@ -264,30 +263,22 @@ local setup_spaces = function()
 					padding_left = 16,
 					padding_right = 8,
 					font = {
-						---@type string
 						family = settings.font.text,
-						---@type string
 						style = settings.font.style_map["Bold"],
 					},
-					---@type number
 					color = colors.bg1,
-					---@type string
-					string = icons.aerospace.main,
+					string = icons.aerospace and icons.aerospace.main or "",
 				},
 				label = {
 					padding_right = 16,
 					font = {
-						---@type string
 						family = settings.font.text,
-						---@type string
 						style = settings.font.style_map["Black"],
 					},
-					---@type number
 					color = colors.bg1,
 					string = string.upper(mode),
 				},
 				background = {
-					---@type number
 					color = colors.blue,
 					border_width = 1,
 					height = 26,
@@ -297,7 +288,7 @@ local setup_spaces = function()
 	end
 
 	sbar.exec("aerospace list-workspaces --all", function(workspaces)
-		create_spaces(workspaces, true)
+		create_spaces(workspaces)
 
 		sbar.exec("aerospace list-workspaces --focused", function(workspace)
 			for focused_workspace in string.gmatch(workspace, EMPTY_SPACE_REGEX) do
@@ -318,7 +309,6 @@ end)
 spaces_indicator:subscribe("swap_menus_and_spaces", function(_)
 	local currently_on = spaces_indicator:query().icon.value == icons.switch.on
 	spaces_indicator:set({
-		---@type string
 		icon = currently_on and icons.switch.off or icons.switch.on,
 	})
 end)
@@ -343,7 +333,6 @@ spaces_indicator:subscribe("mouse.exited", function(_)
 				border_color = { alpha = 0.0 },
 			},
 			icon = {
-				---@type number
 				color = colors.grey,
 			},
 			label = { width = 0 },
@@ -351,6 +340,6 @@ spaces_indicator:subscribe("mouse.exited", function(_)
 	end)
 end)
 
-spaces_indicator:subscribe("mouse.clicked", function(env)
+spaces_indicator:subscribe("mouse.clicked", function(_)
 	sbar.trigger("swap_menus_and_spaces")
 end)

@@ -1,4 +1,6 @@
+---@type Colors
 local colors = require("colors")
+---@type Icons
 local icons = require("icons")
 
 sbar.add("item", { width = 7 })
@@ -6,11 +8,9 @@ sbar.add("item", { width = 7 })
 sbar.add("item", {
 	icon = {
 		font = { size = 18.0 },
-		---@type string
 		string = icons.apple,
 		padding_right = 8,
 		padding_left = 8,
-		---@type number
 		color = colors.magenta,
 	},
 	label = { drawing = false },

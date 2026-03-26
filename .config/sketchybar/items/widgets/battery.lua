@@ -1,5 +1,8 @@
+---@type Icons
 local icons = require("icons")
+---@type Colors
 local colors = require("colors")
+---@type Settings
 local settings = require("settings")
 
 local battery = sbar.add("item", "widgets.battery", {
@@ -40,40 +43,29 @@ battery:subscribe({ "routine", "power_source_change", "system_woke" }, function(
 		local icon = "!"
 		local label = "?"
 
-		---@type boolean, unknown, number?
 		local found, _, charge = batt_info:find("(%d+)%%")
 		if found then
 			charge = tonumber(charge)
 			label = charge .. "%"
 		end
 
-		---@type number
 		local color = colors.green
-		---@type boolean, unknown, unknown
 		local charging, _, _ = batt_info:find("AC Power")
 
 		if charging then
-			---@type string
 			icon = icons.battery.charging
 		else
 			if found and charge > 80 then
-				---@type string
 				icon = icons.battery._100
 			elseif found and charge > 60 then
-				---@type string
 				icon = icons.battery._75
 			elseif found and charge > 40 then
-				---@type string
 				icon = icons.battery._50
 			elseif found and charge > 20 then
-				---@type string
 				icon = icons.battery._25
-				---@type number
 				color = colors.orange
 			else
-				---@type string
 				icon = icons.battery._0
-				---@type number
 				color = colors.red
 			end
 		end
@@ -95,7 +87,6 @@ battery:subscribe("mouse.clicked", function(_)
 
 	if drawing == "off" then
 		sbar.exec("pmset -g batt", function(batt_info)
-			---@type boolean, unknown, number
 			local found, _, remaining = batt_info:find(" (%d+:%d+) remaining")
 			local label = found and remaining .. "h" or "No estimate"
 			remaining_time:set({ label = label })
@@ -110,13 +101,11 @@ end
 battery:subscribe("mouse.exited.global", hide_details)
 sbar.add("bracket", "widgets.battery.bracket", { battery.name }, {
 	background = {
-		---@type number
 		color = colors.bg1,
 	},
 })
 
 sbar.add("item", "widgets.battery.padding", {
 	position = "right",
-	---@type number
 	width = settings.group_paddings,
 })

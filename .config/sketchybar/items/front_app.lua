@@ -1,3 +1,4 @@
+---@type Settings
 local settings = require("settings")
 
 local front_app = sbar.add("item", "front_app", {
@@ -6,7 +7,6 @@ local front_app = sbar.add("item", "front_app", {
 	icon = { drawing = false },
 	label = {
 		font = {
-			---@type number
 			style = settings.font.style_map["Black"],
 			size = 12.0,
 		},
