@@ -33,4 +33,23 @@ curl -fsSL -L \
 	"https://github.com/kvndrsslr/sketchybar-app-font/releases/download/v2.0.47/sketchybar-app-font.ttf" \
 	-o "$HOME/Library/Fonts/sketchybar-app-font.ttf"
 
+# Spicetify
+if command_exists spicetify; then
+	log_skip "Spicetify"
+else
+	log_step "Installing Spicetify"
+	curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
+	# Spicetify catppuccin theme
+	log_step "Installing Spicetify catppuccin theme"
+	git clone --depth 1 https://github.com/catppuccin/spicetify.git /tmp/spicetify-catppuccin
+	cp -r /tmp/spicetify-catppuccin/catppuccin ~/.config/spicetify/Themes/
+	rm -rf /tmp/spicetify-catppuccin
+
+	spicetify config current_theme catppuccin
+	spicetify config color_scheme mocha
+	spicetify config inject_css 1 inject_theme_js 1 replace_colors 1 overwrite_assets 1
+	spicetify backup apply
+fi
+
 log_success "macOS setup complete"

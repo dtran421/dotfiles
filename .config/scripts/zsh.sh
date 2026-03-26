@@ -17,5 +17,6 @@ fi
 clone_if_missing "https://github.com/Aloxaf/fzf-tab" "$ZSH_CUSTOM/plugins/fzf-tab"
 clone_if_missing "https://github.com/zsh-users/zsh-autosuggestions" "$ZSH_CUSTOM/plugins/zsh-autosuggestions"
 clone_if_missing "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$ZSH_CUSTOM/plugins/zsh-syntax-highlighting"
+clone_if_missing "https://github.com/zsh-users/zsh-completions.git" "$ZSH_CUSTOM/plugins/zsh-completions"
 
 log_success "Zsh plugins installed"

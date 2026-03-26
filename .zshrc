@@ -48,6 +48,7 @@ plugins=(
 )
 
 fpath=(${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src $fpath)
+autoload -U compinit && compinit
 source $ZSH/oh-my-zsh.sh
 
 # ╔══════════════════════════════════════════════════════════════════════╗
@@ -211,7 +212,7 @@ alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
-alias conf-install="nvim ~/.config/scripts/install.sh"
+conf-install() { nvim ~/.config/scripts/${1:+$1.}sh; }
 
 # reload
 alias rld-zsh="exec zsh"

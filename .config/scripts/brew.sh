@@ -13,12 +13,7 @@ else
 	log_skip "Homebrew"
 fi
 
-if is_macos; then
-	log_step "Installing from Brewfile"
-	brew bundle install --file=~/dotfiles/Brewfile
-elif is_linux; then
-	log_step "Installing from Brewfile.linux"
-	brew bundle install --file=~/dotfiles/Brewfile.linux
-fi
+log_step "Installing from Brewfile"
+brew bundle install --file=~/dotfiles/Brewfile
 
 log_success "Brew dependencies installed"

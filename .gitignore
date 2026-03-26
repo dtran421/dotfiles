@@ -10,6 +10,7 @@
 .config/karabiner/automatic_backups
 .config/neonctl
 .config/raycast
+.config/spicetify/config-xpui.ini
 .config/spicetify/Themes
 .config/tmux/plugins
 .config/yarn
