@@ -1,0 +1,20 @@
+#!/usr/bin/zsh
+# ╔══════════════════════════════════════════════════════════════════════╗
+# ║                        ⚡  Initialization                          ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+# Machine/setup-specific initialization — not tracked by dotfiles.
+# Use this file for environment config that varies between machines
+# (e.g. work credentials, custom PATHs, local aliases).
+# This file is sourced at the end of .zshrc.
+
+# ── Paths ───────────────────────────────────────────────────────────────
+# export PATH="$PATH:$HOME/.toolbox/bin"
+
+# ── Aliases ─────────────────────────────────────────────────────────────
+# alias myalias="..."
+
+# ── Functions ───────────────────────────────────────────────────────────
+# my_function() { ... }
+
+# ── Startup ─────────────────────────────────────────────────────────────
+# Commands to run on shell init (e.g. credential checks, env setup)

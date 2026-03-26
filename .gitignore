@@ -1,3 +1,5 @@
+.DS_Store
+
 .init.zsh
 
 **/__pycache__
