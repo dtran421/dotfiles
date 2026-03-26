@@ -212,7 +212,7 @@ alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
-conf-install() { nvim ~/.config/scripts/${1:+$1.}sh; }
+conf-install() { nvim ~/.config/scripts/${1:-install}.sh; }
 
 # reload
 alias rld-zsh="exec zsh"

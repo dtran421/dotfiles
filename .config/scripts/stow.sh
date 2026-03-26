@@ -23,8 +23,8 @@ log_step "Running stow"
 stow .
 
 if [[ ! -f "$HOME/.init.zsh" ]]; then
-	log_step "Creating ~/.init.zsh"
-	touch "$HOME/.init.zsh"
+	log_step "Creating ~/.init.zsh from template"
+	cp "$HOME/dotfiles/.init.zsh.template" "$HOME/.init.zsh"
 else
 	log_skip "~/.init.zsh"
 fi

@@ -8,7 +8,6 @@
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.prisma",
     "lazyvim.plugins.extras.lang.python",
-    "lazyvim.plugins.extras.lang.ruby",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.lang.yaml",
     "lazyvim.plugins.extras.lsp.none-ls",
@@ -17,7 +16,7 @@
   ],
   "install_version": 7,
   "news": {
-    "NEWS.md": "11866"
+    "NEWS.md": "10960"
   },
   "version": 8
 }

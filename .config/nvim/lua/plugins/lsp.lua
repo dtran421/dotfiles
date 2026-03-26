@@ -19,12 +19,6 @@ return {
     opts = {
       inlay_hints = { enabled = true },
       servers = {
-        ["*"] = {
-          keys = {
-            { "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", has = "definition" },
-          },
-        },
-
         cssls = {},
 
         tailwindcss = {

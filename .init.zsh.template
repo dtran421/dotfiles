@@ -8,7 +8,7 @@
 # This file is sourced at the end of .zshrc.
 
 # ── Paths ───────────────────────────────────────────────────────────────
-# export PATH="$PATH:$HOME/.toolbox/bin"
+# export PATH="$PATH:$HOME/.local/bin"
 
 # ── Aliases ─────────────────────────────────────────────────────────────
 # alias myalias="..."
