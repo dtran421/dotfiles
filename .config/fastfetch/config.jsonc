@@ -3,25 +3,28 @@
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "display": {
     "color": {
-      "keys": "blue",
+      "keys": "blue"
+    },
+    "temp": {
+      "unit": "F"
     },
     "separator": "",
     // Constants are reusable strings referenced by {$1}, {$2}, etc.
     // These contain ANSI escape codes for cursor positioning
     "constants": [
-      "─────────────────────────────────────────────────", // {$1} - horizontal line for inner borders
-      "\u001b[50D", // {$2} - move cursor left 50 columns
-      "\u001b[50C", // {$3} - move cursor right 50 columns
-      "\u001b[49C", // {$4} - move cursor right 49 columns
-      "─────────────────────────────────────────────────", // {$5} - horizontal line for outer borders
+      "─────────────────────────────────────────────────────", // {$1} - horizontal line for inner borders
+      "\u001b[54D", // {$2} - move cursor left 54 columns
+      "\u001b[54C", // {$3} - move cursor right 54 columns
+      "\u001b[53C", // {$4} - move cursor right 53 columns
+      "─────────────────────────────────────────────────────" // {$5} - horizontal line for outer borders
     ],
-    "brightColor": false,
+    "brightColor": false
   },
   "modules": [
     {
       "type": "version",
       "key": "╭───────────────┬─{$5}╮\u001b[41D",
-      "format": "\u001b[1m{#keys} {1} - {2} ",
+      "format": "\u001b[1m{#keys} {1} - {2} "
     },
     {
       "type": "os",
@@ -36,169 +39,165 @@
       //                        Necessary because the length of `{sysname}` differs between different platforms
       // \u001b[10C           - ANSI escape: move cursor right 10 columns (ESC[10C)
       // │                    - Right border of key block (always 10 columns from left border)
-      // {$3}                 - Reference to constants[2]: move cursor right 50 columns
+      // {$3}                 - Reference to constants[2]: move cursor right 54 columns
       // │                    - Right border of value block
-      // {$2}                 - Reference to constants[1]: move cursor left 50 columns
+      // {$2}                 - Reference to constants[1]: move cursor left 54 columns
       //
       // This creates a fixed-width layout where the key block is exactly 10 columns wide,
       // regardless of the actual content length. The cursor manipulation ensures proper
       // alignment for the table-like structure.
-      "key": "│  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C│{$3}│{$2}",
+      "key": "│  {icon}  \u001b[s{sysname}\u001b[u\u001b[10C│{$3}│{$2}"
     },
     {
       "type": "datetime",
       "key": "│  {icon}  Date      │{$3}│{$2}",
-      "format": "{weekday-short} {month-name-short} {day-in-month} {hour-12-pretty}:{minute-pretty} {timezone-name}",
+      "format": "{weekday-short} {month-name-short} {day-in-month} {hour-12-pretty}:{minute-pretty} {timezone-name}"
     },
     {
       "type": "weather",
-      "key": "│  {icon}  Weather   │{$3}│{$2}",
+      "key": "│  {icon}  Weather   │{$3}│{$2}"
     },
 
     // Utilization section with cyan color theme
     {
       "type": "custom",
       "key": "│{#cyan}╭──────────────┬{$1}╮{#keys}│\u001b[37D",
-      "format": "{#bright_cyan} Utilization ",
+      "format": "{#bright_cyan} Utilization "
     },
     {
       "type": "memory",
-      "key": "│{#cyan}│ {icon}  Memory    │{$4}│{#keys}│{$2}",
+      "key": "│{#cyan}│ {icon}  Memory    │{$4}│{#keys}│{$2}"
     },
     {
       "type": "disk",
       "key": "│{#cyan}│ {icon}  Disk      │{$4}│{#keys}│{$2}",
-      "format": "{size-used} \/ {size-total} ({size-percentage}) - {filesystem}",
+      "format": "{size-used} / {size-total} ({size-percentage}) - {filesystem}"
     },
     {
       "type": "custom",
       "key": "│{#cyan}╰──────────────┴{$1}╯{#keys}│",
-      "format": "",
+      "format": ""
     },
 
     // Hardware section with green color theme
     {
       "type": "custom",
       "key": "│{#green}╭──────────────┬{$1}╮{#keys}│\u001b[37D",
-      "format": "{#bright_green} Hardware ",
+      "format": "{#bright_green} Hardware "
     },
     {
       "type": "display",
       "key": "│{#green}│ {icon}  Display   │{$4}│{#keys}│{$2}",
-      "compactType": "original-with-refresh-rate",
+      "compactType": "original-with-refresh-rate"
     },
     {
       "type": "cpu",
       "key": "│{#green}│ {icon}  CPU       │{$4}│{#keys}│{$2}",
       "showPeCoreCount": true,
-      "temp": true,
+      "temp": true
     },
     {
       "type": "gpu",
       "key": "│{#green}│ {icon}  GPU       │{$4}│{#keys}│{$2}",
-      "temp": true,
+      "temp": true
     },
     {
       "type": "gpu",
       "key": "│{#green}│ {icon}  G-Driver  │{$4}│{#keys}│{$2}",
-      "format": "{driver}",
+      "format": "{driver}"
     },
     {
       "type": "custom",
       "key": "│{#green}╰──────────────┴{$1}╯{#keys}│",
-      "format": "",
+      "format": ""
     },
 
     // Terminal section with yellow color theme
     {
       "type": "custom",
       "key": "│{#yellow}╭──────────────┬{$1}╮{#keys}│\u001b[37D",
-      "format": "{#bright_yellow} Terminal ",
+      "format": "{#bright_yellow} Terminal "
     },
     {
       "type": "shell",
-      "key": "│{#yellow}│ {icon}  Shell     │{$4}│{#keys}│{$2}",
+      "key": "│{#yellow}│ {icon}  Shell     │{$4}│{#keys}│{$2}"
     },
     {
       "type": "terminal",
-      "key": "│{#yellow}│ {icon}  Terminal  │{$4}│{#keys}│{$2}",
+      "key": "│{#yellow}│ {icon}  Terminal  │{$4}│{#keys}│{$2}"
     },
     {
       "type": "packages",
-      "key": "│{#yellow}│ {icon}  Packages  │{$4}│{#keys}│{$2}",
+      "key": "│{#yellow}│ {icon}  Packages  │{$4}│{#keys}│{$2}"
     },
     {
       "type": "custom",
       "key": "│{#yellow}╰──────────────┴{$1}╯{#keys}│",
-      "format": "",
+      "format": ""
     },
 
     // Development section with red color theme
     {
       "type": "custom",
       "key": "│{#red}╭──────────────┬{$1}╮{#keys}│\u001b[39D",
-      "format": "{#bright_red} Development ",
+      "format": "{#bright_red} Development "
     },
     {
       "type": "command",
       "keyIcon": "",
       "key": "│{#red}│ {icon}  NodeJS    │{$4}│{#keys}│{$2}",
       "text": "node --version",
-      "format": "node {~1}", // {~1} removes first character (v)
+      "format": "node {~1}" // {~1} removes first character (v)
     },
     {
       "type": "editor",
-      "key": "│{#red}│ {icon}  Editor    │{$4}│{#keys}│{$2}",
+      "key": "│{#red}│ {icon}  Editor    │{$4}│{#keys}│{$2}"
     },
     {
       "type": "command",
       "keyIcon": "󰊢",
       "key": "│{#red}│ {icon}  Git       │{$4}│{#keys}│{$2}",
       "text": "git version",
-      "format": "git {~12}",
-    },
-    {
-      "type": "font",
-      "key": "│{#red}│ {icon}  Interface │{$4}│{#keys}│{$2}",
+      "format": "git {~12}"
     },
     {
       "type": "custom",
       "key": "│{#red}╰──────────────┴{$1}╯{#keys}│",
-      "format": "",
+      "format": ""
     },
 
     // Uptime section with magenta color theme
     {
       "type": "custom",
       "key": "│{#magenta}╭──────────────┬{$1}╮{#keys}│\u001b[36D",
-      "format": "{#bright_magenta} Uptime ",
+      "format": "{#bright_magenta} Uptime "
     },
     {
       "type": "uptime",
-      "key": "│{#magenta}│ {icon}  Uptime    │{$4}│{#keys}│{$2}",
+      "key": "│{#magenta}│ {icon}  Uptime    │{$4}│{#keys}│{$2}"
     },
     {
       "type": "users",
       "myselfOnly": true, // Only show current user
       "keyIcon": "",
       "key": "│{#magenta}│ {icon}  Login     │{$4}│{#keys}│{$2}",
-      "format": "{name}@{client-ip} since {login-time}",
+      "format": "{name}@{client-ip} since {login-time}"
     },
     {
       "type": "custom",
       "key": "│{#magenta}╰──────────────┴{$1}╯{#keys}│",
-      "format": "",
+      "format": ""
     },
     {
       "type": "custom",
       "key": "╰─────────────────{$5}╯", // Bottom border of the entire layout
-      "format": "",
+      "format": ""
     },
 
     // End with color palette and line break
     "break", // Add a blank line
-    "colors", // Display color palette
-  ],
+    "colors" // Display color palette
+  ]
 }
 
 /*
