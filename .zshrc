@@ -82,6 +82,7 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' menu no
 zstyle ':completion:*:git-checkout:*' sort false
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # ╔══════════════════════════════════════════════════════════════════════╗
 # ║                       ⌨️  Key Bindings                               ║
