@@ -14,4 +14,8 @@
 .config/spicetify/Themes
 .config/tmux/plugins
 .config/yarn
-.config/yazi/flavors
+.config/yazi/theme.toml
+.config/yazi/themes
+.config/yazi/.current-accent
+.config/yazi/plugins/*
+!.config/yazi/plugins/cycle-theme.yazi
