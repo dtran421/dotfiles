@@ -23,7 +23,7 @@ return {
           local builtin = require("telescope.builtin")
           builtin.find_files({
             -- Show .config/ contents but hide other top-level dotfiles
-            find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git", "--exclude", ".[!c]*", "--exclude", ".[c][!o]*" },
+            find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git", "--exclude", ".[!c]*", "--exclude", ".[c][!o]*", "--exclude", "env", "--exclude", "build" },
           })
         end,
         desc = "Lists files in your current working directory, respects .gitignore",
@@ -102,6 +102,7 @@ return {
         layout_config = { prompt_position = "top" },
         sorting_strategy = "ascending",
         winblend = 0,
+        file_ignore_patterns = { "%.env/", "env/", "build/" },
         mappings = {
           n = {},
         },

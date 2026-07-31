@@ -19,3 +19,9 @@
 .config/yazi/.current-accent
 .config/yazi/plugins/*
 !.config/yazi/plugins/cycle-theme.yazi
+
+# work stuff
+.config/ada
+.config/brazil
+.config/cr
+.config/mechanic

@@ -58,8 +58,9 @@ return {
     "nvimdev/dashboard-nvim",
     lazy = false,
     opts = function()
+      ---@type string
       local logo = [[
-        __    __ ________  ______  __     __ ______ __       __ 
+        __    __ _______  ______  __     __ ______ __       __ 
         |  \  |  \        \/      \|  \   |  \      \  \     /  \
         | ▓▓\ | ▓▓ ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓\ ▓▓   | ▓▓\▓▓▓▓▓▓ ▓▓\   /  ▓▓
         | ▓▓▓\| ▓▓ ▓▓__   | ▓▓  | ▓▓ ▓▓   | ▓▓ | ▓▓ | ▓▓▓\ /  ▓▓▓
@@ -183,17 +184,17 @@ return {
         lualine_x = {
           {
             function()
-              return require("noice").api.status.mode.get()
+              return require("noice").status.mode.get()
             end,
             cond = function()
-              return package.loaded["noice"] and require("noice").api.status.mode.has()
+              return package.loaded["noice"] and require("noice").status and require("noice").status.mode.has()
             end,
             color = function()
               return { fg = Snacks.util.color("Constant") }
             end,
           },
         },
-        lualine_y = { "none" },
+        lualine_y = { "searchcount" },
         lualine_z = {
           { "progress", separator = " ", padding = { left = 1, right = 0 } },
           { "location", separator = { right = "" }, padding = { left = 0, right = 1 } },
