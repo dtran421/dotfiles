@@ -60,15 +60,14 @@ return {
     opts = function()
       ---@type string
       local logo = [[
-        __    __ _______  ______  __     __ ______ __       __ 
-        |  \  |  \        \/      \|  \   |  \      \  \     /  \
-        | ▓▓\ | ▓▓ ▓▓▓▓▓▓▓▓  ▓▓▓▓▓▓\ ▓▓   | ▓▓\▓▓▓▓▓▓ ▓▓\   /  ▓▓
-        | ▓▓▓\| ▓▓ ▓▓__   | ▓▓  | ▓▓ ▓▓   | ▓▓ | ▓▓ | ▓▓▓\ /  ▓▓▓
-        | ▓▓▓▓\ ▓▓ ▓▓  \  | ▓▓  | ▓▓\▓▓\ /  ▓▓ | ▓▓ | ▓▓▓▓\  ▓▓▓▓
-        | ▓▓\▓▓ ▓▓ ▓▓▓▓▓  | ▓▓  | ▓▓ \▓▓\  ▓▓  | ▓▓ | ▓▓\▓▓ ▓▓ ▓▓
-        | ▓▓ \▓▓▓▓ ▓▓_____| ▓▓__/ ▓▓  \▓▓ ▓▓  _| ▓▓_| ▓▓ \▓▓▓| ▓▓
-        | ▓▓  \▓▓▓ ▓▓     \\▓▓    ▓▓   \▓▓▓  |   ▓▓ \ ▓▓  \▓ | ▓▓
-        \▓▓   \▓▓\▓▓▓▓▓▓▓▓ \▓▓▓▓▓▓     \▓    \▓▓▓▓▓▓\▓▓      \▓▓
+        ██████   █████ ██████████    ███████    █████   █████ █████ ██████   ██████
+       ▒▒██████ ▒▒███ ▒▒███▒▒▒▒▒█  ███▒▒▒▒▒███ ▒▒███   ▒▒███ ▒▒███ ▒▒██████ ██████
+        ▒███▒███ ▒███  ▒███  █ ▒  ███     ▒▒███ ▒███    ▒███  ▒███  ▒███▒█████▒███
+        ▒███▒▒███▒███  ▒██████   ▒███      ▒███ ▒███    ▒███  ▒███  ▒███▒▒███ ▒███
+        ▒███ ▒▒██████  ▒███▒▒█   ▒███      ▒███ ▒▒███   ███   ▒███  ▒███ ▒▒▒  ▒███
+        ▒███  ▒▒█████  ▒███ ▒   █▒▒███     ███   ▒▒▒█████▒    ▒███  ▒███      ▒███
+        █████  ▒▒█████ ██████████ ▒▒▒███████▒      ▒▒███      █████ █████     █████
+       ▒▒▒▒▒    ▒▒▒▒▒ ▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒         ▒▒▒      ▒▒▒▒▒ ▒▒▒▒▒     ▒▒▒▒▒
       ]]
 
       logo = string.rep("\n", 8) .. logo .. "\n\n"
@@ -148,6 +147,62 @@ return {
           end,
         },
       }
+    end,
+    config = function(_, opts)
+      require("dashboard").setup(opts)
+
+      -- Apply catppuccin gradient to dashboard header lines
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = "dashboard",
+        callback = function(ev)
+          local gradient_hls = {
+            "DashboardHeader1",
+            "DashboardHeader2",
+            "DashboardHeader3",
+            "DashboardHeader4",
+            "DashboardHeader5",
+            "DashboardHeader6",
+            "DashboardHeader7",
+            "DashboardHeader8",
+            "DashboardHeader9",
+            "DashboardHeader10",
+          }
+
+          vim.schedule(function()
+            local buf = ev.buf
+            if not vim.api.nvim_buf_is_valid(buf) then
+              return
+            end
+            local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+            -- Find header lines (non-empty lines before the center section)
+            local header_start, header_end
+            for i, line in ipairs(lines) do
+              if not header_start and line:match("[▓|\\]") then
+                header_start = i
+              end
+              if header_start and not line:match("[▓|\\]") and line:match("^%s*$") then
+                header_end = i - 1
+                break
+              end
+            end
+
+            if header_start and header_end then
+              local header_lines = header_end - header_start + 1
+              local ns = vim.api.nvim_create_namespace("dashboard_gradient")
+              vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
+
+              for i = header_start, header_end do
+                local idx = math.floor((i - header_start) / header_lines * #gradient_hls) + 1
+                idx = math.min(idx, #gradient_hls)
+                vim.api.nvim_buf_set_extmark(buf, ns, i - 1, 0, {
+                  line_hl_group = gradient_hls[idx],
+                  priority = 200,
+                })
+              end
+            end
+          end)
+        end,
+      })
     end,
   },
 
