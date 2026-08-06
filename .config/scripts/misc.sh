@@ -12,6 +12,11 @@ log_step "Downloading eza catppuccin theme"
 mkdir -p ~/.config/eza
 curl -fsSL "https://raw.githubusercontent.com/eza-community/eza-themes/refs/heads/main/themes/catppuccin-mocha.yml" -o ~/.config/eza/theme.yml
 
+log_step "Downloading yazi plugins"
+# oh-my-zsh aliases `yarn add` as ya
+unalias ya
+ya pkg install
+
 log_step "Downloading catppuccin mocha yazi themes"
 YAZI_THEMES_DIR="$HOME/.config/yazi/themes"
 mkdir -p "$YAZI_THEMES_DIR"
