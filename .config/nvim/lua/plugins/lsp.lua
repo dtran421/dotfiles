@@ -3,9 +3,9 @@ return {
   {
     "mason-org/mason.nvim",
     opts = function(_, opts)
-      -- Use Node 16 for Mason LSP servers (Node 18+ requires GLIBC 2.28, AL2 only has 2.26)
-      local node16_bin = vim.fn.expand("~/.nvm/versions/node/v16.20.2/bin")
-      vim.env.PATH = node16_bin .. ":" .. vim.env.PATH
+      -- Use Node 22 for Mason LSP servers (eslint needs structuredClone, i.e. Node 17+)
+      local node_bin = vim.fn.expand("~/.nvm/versions/node/v22.23.3/bin")
+      vim.env.PATH = node_bin .. ":" .. vim.env.PATH
 
       vim.list_extend(opts.ensure_installed, {
         "luacheck",

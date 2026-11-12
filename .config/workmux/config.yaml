@@ -1,0 +1,15 @@
+nerdfont: true
+sidebar:
+  position: top
+
+  # Top bar height in rows
+  height: 3
+
+  horizontal:
+    item_width: 24 # horizontal chip width in columns
+
+  templates:
+    horizontal:
+      - "{status_icon} {primary} {pane_suffix} {fill} {elapsed}"
+      - "{secondary} {fill} {git_stats}"
+      - "{pane_title}"

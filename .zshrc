@@ -202,6 +202,14 @@ eval $(thefuck --alias)
 alias lg=lazygit
 
 # ╔══════════════════════════════════════════════════════════════════════╗
+# ║                        🚧  workmux                                   ║
+# ╚══════════════════════════════════════════════════════════════════════╝
+
+alias wm=workmux
+
+eval "$(workmux completions zsh)"
+
+# ╔══════════════════════════════════════════════════════════════════════╗
 # ║                        🏷️  Aliases                                   ║
 # ╚══════════════════════════════════════════════════════════════════════╝
 
@@ -213,6 +221,7 @@ alias conf-tmux="nvim ~/.config/tmux/tmux.conf"
 alias conf-nvim="nvim ~/.config/nvim/lua/dtran/plugins.lua"
 alias conf-ghostty="nvim ~/.config/ghostty/config"
 alias conf-aero="nvim ~/.config/aerospace/aerospace.toml"
+alias conf-wm="nvim ~/.config/workmux/config.yaml"
 conf-install() { nvim ~/.config/scripts/${1:-install}.sh; }
 
 # reload
